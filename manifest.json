@@ -1,6 +1,6 @@
 {
-  "name": "Mon Application",
-  "short_name": "MonApp",
+  "name": "Brasserie de la Gare",
+  "short_name": "Brasserie",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#000000",
