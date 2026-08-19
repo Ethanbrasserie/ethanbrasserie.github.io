@@ -981,7 +981,34 @@
 <div id="page-reservation" class="page space-y-4">
     <h2 class="text-3xl font-bold text-center bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent" data-i18n="reservation_title">Réserver une table</h2>
     <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-        <iframe src="https://reservation.dish.co/widget/hydra-8bc9df20-349d-4191-a666-10088fc8340c?&eid=hydra-8bc9df20-349d-4191-a666-10088fc8340c&tagid=hors-hydra-8bc9df20-349d-4191-a666-10088fc8340c&width=100%25&height=500&lang=fr" width="100%" height="600" frameborder="0" style="display:block;"></iframe>
+        <div class="mod-resevation-tool">
+            <div id="hors-hydra-0011i000002kAJVAA2" class="reservation-tool-box">
+                <iframe id="reservationWidget" src="https://reservation.dish.co/widget/hydra-0011i000002kAJVAA2?&amp;eid=hydra-0011i000002kAJVAA2&amp;tagid=hors-hydra-0011i000002kAJVAA2&amp;width=100%25&amp;height=500&amp;foregroundColor=&amp;backgroundColor=rgba(0%2C%200%2C%200%2C%200.2)&amp;linkColor=&amp;errorColor=%23ffa500&amp;primaryButtonForegroundColor=%23fff&amp;primaryButtonBackgroundColor=%239c27b0&amp;secondaryButtonForegroundColor=%23000&amp;secondaryButtonBackgroundColor=%23fff&amp;cookieAcceptanceLevel=2&amp;lang=fr" width="100%" height="500" frameborder="0" style="display:block;">
+                    <p>Your browser does not support iframes.</p>
+                </iframe>
+            </div>
+            <script>
+                var cookieAcceptanceLevelWSB = document.cookie.match(new RegExp('(^| )' + 'cookieAcceptanceLevelWSB' + '=([^;]+)')) || [];
+
+                var _hors=[
+                    ['eid','hydra-0011i000002kAJVAA2'],
+                    ['tagid','hors-hydra-0011i000002kAJVAA2'],
+                    ['width','100%'],
+                    ['height','500'],
+                    ['foregroundColor',''],
+                    ['backgroundColor','rgba(0, 0, 0, 0.2)'],
+                    ['linkColor',''],
+                    ['errorColor','#ffa500'],
+                    ['primaryButtonForegroundColor','#fff'],
+                    ['primaryButtonBackgroundColor','#9c27b0'],
+                    ['secondaryButtonForegroundColor','#000'],
+                    ['secondaryButtonBackgroundColor','#fff'],
+                    ['cookieAcceptanceLevel', cookieAcceptanceLevelWSB[2] || '0'],
+                    ['lang','fr']
+                ];
+                (function(d, t) { var e=d.createElement(t),s=d.getElementsByTagName(t)[0]; e.src = "https://reservation.dish.co/widget.js"; s.parentNode.insertBefore(e,s); }(document, 'script'));
+            </script>
+        </div>
     </div>
     <button onclick="goToPage('home')" class="w-full bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold" data-i18n="back_home">Retour à l'accueil</button>
 </div>
@@ -1170,7 +1197,7 @@
     <div id="order-confirmation" class="hidden bg-white rounded-2xl p-6 shadow-md">
         <div class="text-center mb-4">
             <p class="text-5xl mb-3">🎉</p>
-            <h3 class="text-xl font-black text-gray-800">Commande envoyée !</h3>
+            <h3 class="text-xl font-black text-gray-800">Message prêt à envoyer !</h3>
             <p class="text-sm text-gray-500 mt-1" id="order-confirm-text"></p>
         </div>
         <div id="order-status-tracker" class="hidden mb-4">
@@ -1862,8 +1889,8 @@ function setLang(lang) {
     currentLang = lang;
     localStorage.setItem('brasserie_lang', lang);
     applyLang();
-}
-function applyLang() {
+
+}function applyLang() {
     const t = LANGS[currentLang] || LANGS.fr;
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const k = el.getAttribute('data-i18n');
@@ -2179,7 +2206,29 @@ function toggleAllergie(btn, label) {
 }
 
 let pendingOrderData = {};
-function validerCommande() {
+async function copierMessageCommande(msg) {
+    try {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(msg);
+            return true;
+        }
+    } catch(e) {}
+    try {
+        const ta = document.createElement('textarea');
+        ta.value = msg;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        const ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        return ok;
+    } catch(e) {
+        return false;
+    }
+}
+async function validerCommande() {
     const prenom = document.getElementById('order-prenom').value.trim();
     const tel = document.getElementById('order-tel').value.trim();
     const heure = document.getElementById('order-heure').value;
@@ -2198,8 +2247,15 @@ function validerCommande() {
             }
         })
     );
-    sauvegarderPopularite();
     if (!recap.length) { alert('Merci de sélectionner au moins un plat !'); return; }
+    const confirmationCanular = confirm(
+        "Ce n'est pas un canular ?\n\n" +
+        "De toute maniere, un appel avec vous sera passe pour confirmer.\n\n" +
+        "Pour plus d'infos, contactez le 01.60.20.24.01"
+    );
+    if (!confirmationCanular) return;
+    const messengerWindow = window.open('about:blank', '_blank');
+    sauvegarderPopularite();
     const parts = heure.replace('h',':').split(':');
     const d = new Date(); d.setHours(parseInt(parts[0]), parseInt(parts[1]) + 10, 0);
     const hRetrait = d.getHours() + 'h' + String(d.getMinutes()).padStart(2,'0');
@@ -2221,12 +2277,20 @@ function validerCommande() {
     }
     if (note) msg += '\n\n💬 Note : ' + note;
     pendingOrderData = { prenom, tel, heure, recap, note, total, playerId: osPlayerId };
-    if (navigator.clipboard) navigator.clipboard.writeText(msg).catch(() => {});
-    else { const ta = document.createElement('textarea'); ta.value = msg; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); }
+    const messageCopie = await copierMessageCommande(msg);
     // Enregistrer la commande dans localStorage pour l'admin
     enregistrerCommande(prenom, tel, heure, recap, total.toFixed(2).replace('.',',') + ' €', note);
     document.getElementById('recap-modal-text').textContent = msg;
-    document.getElementById('order-recap-modal').classList.remove('hidden');
+    showToast('📋','Message copié !','Messenger va s\'ouvrir, colle le message dans la conversation.');
+    alert(messageCopie
+        ? "Message copié !\n\nMessenger va s'ouvrir. Collez le message dans la conversation."
+        : "Messenger va s'ouvrir.\n\nSi le message n'est pas copié automatiquement, utilisez le bouton Recopier le message sur le site.");
+    if (messengerWindow && !messengerWindow.closed) {
+        messengerWindow.location.href = 'https://m.me/brasserievaires';
+    } else {
+        window.location.href = 'https://m.me/brasserievaires';
+    }
+    finishOrder();
 }
 function openMessengerFromModal() {
     document.getElementById('order-recap-modal').classList.add('hidden');
@@ -2246,10 +2310,10 @@ function finishOrder() {
     document.getElementById('order-validate-btn').classList.add('hidden');
     document.getElementById('order-confirmation').classList.remove('hidden');
     launchConfetti();
-    sendNotif('✅ Commande envoyée !','Ta commande a bien été envoyée sur Messenger.');
+    sendNotif('📋 Message prêt !','Ta commande est copiée. Colle-la dans Messenger pour l\'envoyer.');
     generateQR(prenom, heure, pendingOrderData.recap, pendingOrderData.total.toFixed(2).replace('.',',') + ' €');
     const ct = document.getElementById('order-confirm-text');
-    if (ct) ct.textContent = 'Merci ' + prenom + ' · Retrait à ' + heure;
+    if (ct) ct.textContent = 'Message copié ! Collez-le dans Messenger. Merci ' + prenom + ' · Retrait à ' + heure;
     // Envoyer notification ntfy
     envoyerNotifNtfy(pendingOrderData);
     // Rappel 15 min avant
