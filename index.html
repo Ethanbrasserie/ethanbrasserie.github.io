@@ -4084,5 +4084,65 @@ h1,h2{animation:h-glitch 5s infinite}
   setTimeout(()=>showToast('🎃','Joyeux Halloween !','Bienvenue à la Brasserie hantée 👻'),1500);
 })();
 </script>
-<!-- ============ FIN THÈME HALLOWEEN v2 ============ --></body>
+<!-- ============ FIN THÈME HALLOWEEN v2 ============ --><!-- ===== RETRAIT CLICK & COLLECT =====
+  À coller JUSTE APRÈS le bloc "THÈME HALLOWEEN v2" (avant </body>). -->
+<script>
+(function(){
+  const kill = el => el && el.remove();
+  // pages, modales, onglet du bas
+  ['page-order','order-recap-modal','nav-order','statut-cuisine-banner','home-trending-box','plat-du-jour-box'].forEach(id=>kill(document.getElementById(id)));
+  // boutons "Commander" (accueil, plat du jour...)
+  document.querySelectorAll('[onclick*="goToPage(\'order\')"]').forEach(kill);
+  const g = document.querySelector('#page-home .grid-cols-2'); if(g) g.style.gridTemplateColumns='1fr';
+  // cartes de l'admin liées aux commandes / cuisine
+  document.querySelectorAll('#page-admin h3').forEach(h=>{
+    if(/Click|Statistiques commandes|Statut cuisine|Alertes stock/i.test(h.textContent)) kill(h.closest('.bg-white'));
+  });
+  // mention "desserts non disponibles à emporter"
+  document.querySelectorAll('#page-menu p').forEach(p=>{ if(/emporter/i.test(p.textContent)) kill(p.parentElement); });
+  // Chef Bot : plus de commande en ligne
+  if(window.getChefBotReply){
+    const b = window.getChefBotReply;
+    window.getChefBotReply = m => /command|emporter|collect/.test(m)
+      ? "Pour toute demande, appelez-nous au 01 60 20 24 01 ou réservez une table ! 🎃" : b(m);
+  }
+  // neutralise les fonctions restantes
+  window.validerCommande = window.envoyerNotifNtfy = window.envoyerNotifNtfyPret = ()=>{};
+  try{ ['brasserie_orders_v1','brasserie_historique_v1','brasserie_popularite_v1','brasserie_stock_v1','brasserie_statut_cuisine_v1'].forEach(k=>localStorage.removeItem(k)); }catch(e){}
+})();
+</script>
+<!-- ===== FIN RETRAIT CLICK & COLLECT ===== --><!-- ===== PHOTOS DE LA GALERIE =====
+  À coller avant </body>, après les autres blocs (thème Halloween, retrait Click & Collect). -->
+<style>
+#gallery-container > div{border:2px solid #ff7518;box-shadow:0 0 14px rgba(255,117,24,.35);transition:transform .25s,box-shadow .25s}
+#gallery-container > div:hover{transform:scale(1.04) rotate(-1.5deg);box-shadow:0 0 28px rgba(255,117,24,.8)}
+</style>
+<script>
+(function(){
+  const PHOTOS = [
+    "https://i.postimg.cc/XvV7ZjHv/Brasserie-de-la-gare-353637041-743405227788034-8798944052498322968-n-jpg.jpg",
+    "https://i.postimg.cc/Jz8BqW6v/r6ce-french-fries-Restaurant-Brasserie-De-La-Gare-(1).jpg",
+    "https://i.postimg.cc/Zq7B4vbJ/Vaires-Cafe-de-la-gare-Restaurant-2016-(1).jpg",
+    "https://i.postimg.cc/0QhzJgKC/Brasserie-de-la-gare-Full-Size-Render-min-png.jpg",
+    "https://i.postimg.cc/GtYHFMkr/Brasserie-de-la-gare-IMG-5483-min-png.jpg",
+    "https://i.postimg.cc/JzDZCvmK/Brasserie-de-la-gare-Full-Size-Render-min-png.jpg",
+    "https://i.postimg.cc/vBVcTjnZ/Brasserie-de-la-gare-387839888-824255779702978-3611663491141196816-n-jpg.jpg",
+    "https://i.postimg.cc/3wywf6nL/images-(5).jpg"
+  ];
+  function seed(){
+    let saved = [];
+    try{ saved = JSON.parse(localStorage.getItem('brasserie_photos_v1') || '[]'); }catch(e){}
+    const have = new Set(saved.map(p => p.url));
+    PHOTOS.forEach((url,i)=>{ if(!have.has(url)) saved.push({ id:'ph'+(i+1), url, caption:'' }); });
+    appState.photos = saved;
+    localStorage.setItem('brasserie_photos_v1', JSON.stringify(saved));
+    renderGallery();
+    if(typeof renderAdminGalerie === 'function') renderAdminGalerie();
+  }
+  // s'exécute après l'initialisation du site
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ()=>setTimeout(seed,0));
+  else seed();
+})();
+</script>
+<!-- ===== FIN PHOTOS DE LA GALERIE ===== --></body>
 </html>
