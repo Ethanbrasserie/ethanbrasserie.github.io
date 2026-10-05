@@ -4144,5 +4144,95 @@ h1,h2{animation:h-glitch 5s infinite}
   else seed();
 })();
 </script>
-<!-- ===== FIN PHOTOS DE LA GALERIE ===== --></body>
+<!-- ===== FIN PHOTOS DE LA GALERIE ===== --><!-- ===== AVERTISSEMENT CARTE + JEUX HALLOWEEN =====
+  À coller avant </body>, après les autres blocs. -->
+<style>
+.h-notice{border:3px solid #ff7518;border-radius:20px;padding:20px 18px;text-align:center;background:linear-gradient(135deg,#1c1129,#2a1a3d) !important;
+  animation:h-glow 2.4s infinite;color:#f3e8ff}
+.h-notice .ico{font-size:2.6rem;display:block;animation:h-bob 2.5s infinite}
+.h-notice .ttl{font-family:'Creepster',cursive;font-size:1.9rem;letter-spacing:2px;color:#ffb066;margin:6px 0 10px;text-shadow:0 0 14px #ff7518}
+.h-notice p{font-size:1.05rem;line-height:1.6;margin:6px 0;color:#f3e8ff !important}
+.h-notice strong{color:#ffb066}
+.h-notice a{display:inline-block;margin-top:10px;padding:10px 18px;border-radius:12px;background:#ff7518;color:#1a0a2a !important;font-weight:800;text-decoration:none}
+.hg-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,117,24,.45);border-radius:20px;padding:18px;color:#fff;text-align:center}
+.hg-arena{position:relative;height:260px;border-radius:14px;overflow:hidden;margin:12px 0;touch-action:manipulation;
+  background:radial-gradient(circle at 50% 100%,#4a1d7a,#12071f);border:1px solid rgba(255,117,24,.35)}
+.hg-item{position:absolute;font-size:2.4rem;cursor:pointer;user-select:none;animation:hg-pop .25s ease-out}
+@keyframes hg-pop{from{transform:scale(0)}to{transform:scale(1)}}
+.hg-btn{width:100%;padding:13px;border:none;border-radius:12px;font-weight:800;color:#fff;cursor:pointer;background:linear-gradient(135deg,#ff7518,#6b21a8)}
+</style>
+<script>
+(function(){
+  // ---------- 1) AVERTISSEMENT SUR LA CARTE ----------
+  const menu = document.getElementById('page-menu');
+  if(menu && !document.getElementById('h-notice')){
+    menu.querySelector('h2').insertAdjacentHTML('afterend',
+      '<div id="h-notice" class="h-notice">'
+      + '<span class="ico">⚠️</span>'
+      + '<div class="ttl">Information importante</div>'
+      + '<p><strong>Notre carte change très souvent</strong> : plats, suppléments et prix évoluent au fil des saisons et de l\'approvisionnement.</p>'
+      + '<p>Les créateurs de ce site <strong>ne peuvent pas être informés de chaque modification</strong> : certains plats ou tarifs affichés peuvent ne plus être à jour.</p>'
+      + '<p>La carte présentée sur place fait foi. Pour une allergie ou une information précise, adressez-vous à notre équipe.</p>'
+      + '<a href="tel:0160202401">📞 Nous appeler : 01 60 20 24 01</a>'
+      + '</div>');
+  }
+
+  // ---------- 2) QUIZ : questions brasserie + Halloween ----------
+  if(typeof QUIZ !== 'undefined'){
+    QUIZ.splice(0, QUIZ.length,
+      { q:'Quelle est la spécialité emblématique de la brasserie ?', r:['Pizza','BG Burger','Sushi'], a:1 },
+      { q:'À quelle heure ouvre la brasserie le samedi ?', r:['8h00','7h00','9h00'], a:0 },
+      { q:'Quel dessert est fait à la vanille de Madagascar ?', r:['Moelleux au chocolat','Café gourmand','Crème brûlée'], a:2 },
+      { q:'Quelle date est Halloween ?', r:['21 octobre','1er novembre','31 octobre'], a:2 },
+      { q:'Quel fruit sculpte-t-on traditionnellement à Halloween ?', r:['La citrouille','La pastèque','L\'ananas'], a:0 },
+      { q:'Quel animal est associé aux vampires ?', r:['Le dauphin','La chauve-souris','La girafe'], a:1 },
+      { q:'D\'où vient la tradition d\'Halloween ?', r:['Du Brésil','Du Japon','D\'Irlande (fête celtique Samain)'], a:2 }
+    );
+  }
+  const st = document.querySelector('.jeux-subtitle'); if(st) st.textContent = 'Spécial Halloween 🎃 · Brasserie de la Gare';
+
+  // ---------- 3) MINI-JEU : ATTRAPE LES CITROUILLES ----------
+  const qr = document.getElementById('quiz-result');
+  if(qr && !document.getElementById('hg-card')){
+    qr.insertAdjacentHTML('afterend',
+      '<div id="hg-card" class="hg-card">'
+      + '<div style="font-size:2rem">🎃</div>'
+      + '<div style="font-weight:800;font-size:1.05rem">Attrape les citrouilles !</div>'
+      + '<div style="font-size:.75rem;opacity:.7;margin-top:2px">🎃 +1 · 🍬 +3 · 👻 −2 · 20 secondes</div>'
+      + '<div style="display:flex;justify-content:space-around;margin-top:10px;font-weight:800">'
+      +   '<span>⏱️ <b id="hg-time">20</b>s</span><span>Score : <b id="hg-score">0</b></span><span>🏆 <b id="hg-best">0</b></span></div>'
+      + '<div id="hg-arena" class="hg-arena"><div id="hg-msg" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:.6;font-size:.9rem">Appuie sur Jouer pour commencer</div></div>'
+      + '<button class="hg-btn" onclick="hgStart()">🎮 Jouer</button></div>');
+    document.getElementById('hg-best').textContent = localStorage.getItem('brasserie_halloween_best') || 0;
+  }
+  let score=0, time=20, tick=null, spawn=null;
+  window.hgStart = function(){
+    clearInterval(tick); clearInterval(spawn);
+    score=0; time=20;
+    const arena = document.getElementById('hg-arena'); arena.innerHTML='';
+    document.getElementById('hg-score').textContent=0; document.getElementById('hg-time').textContent=time;
+    spawn = setInterval(()=>{
+      const r = Math.random(), kind = r<.12 ? ['🍬',3] : r<.35 ? ['👻',-2] : ['🎃',1];
+      const it = document.createElement('div'); it.className='hg-item'; it.textContent=kind[0];
+      it.style.left = Math.random()*(arena.clientWidth-50)+'px'; it.style.top = Math.random()*(arena.clientHeight-50)+'px';
+      it.addEventListener('pointerdown', e=>{
+        e.stopPropagation(); score=Math.max(0,score+kind[1]);
+        document.getElementById('hg-score').textContent=score; it.remove();
+        if(navigator.vibrate && kind[1]<0) navigator.vibrate(60);
+      });
+      arena.appendChild(it); setTimeout(()=>it.remove(), 1100);
+    }, 520);
+    tick = setInterval(()=>{
+      time--; document.getElementById('hg-time').textContent=time;
+      if(time<=0){
+        clearInterval(tick); clearInterval(spawn); arena.innerHTML='';
+        const best = +localStorage.getItem('brasserie_halloween_best')||0;
+        const rec = score>best; if(rec){ localStorage.setItem('brasserie_halloween_best',score); document.getElementById('hg-best').textContent=score; if(window.launchConfetti) launchConfetti(); }
+        arena.innerHTML = '<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px"><div style="font-size:2.4rem">'+(rec?'🏆':'💀')+'</div><div style="font-weight:800;font-size:1.3rem">'+score+' points</div><div style="font-size:.8rem;opacity:.7">'+(rec?'Nouveau record !':'Rejoue pour battre ton record')+'</div></div>';
+      }
+    },1000);
+  };
+})();
+</script>
+<!-- ===== FIN AVERTISSEMENT CARTE + JEUX ===== --></body>
 </html>
