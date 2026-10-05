@@ -4396,121 +4396,226 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 5000);
 });
 </script>
-<!-- ============ THÈME HALLOWEEN ============
-  Colle ce bloc dans ton fichier, JUSTE AVANT </body> (après le dernier </script>).
-  Rien d'autre à modifier : il surcharge les couleurs, ajoute les décors et les animations. -->
+<!-- ============ THÈME HALLOWEEN v2 ============
+  1) SUPPRIME l'ancien bloc Halloween (de "THÈME HALLOWEEN" à "FIN THÈME HALLOWEEN").
+  2) Colle celui-ci juste avant </body>, après le dernier </script>. -->
 <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
 <style id="halloween-style">
-:root{--h-orange:#ff7518;--h-purple:#6b21a8;--h-night:#0d0714;--h-card:#1c1129;--h-text:#f3e8ff}
-html body{background:radial-gradient(circle at 50% 0%,#2a1245 0%,#0d0714 70%) fixed !important;color:var(--h-text)}
+:root{--h-card:#1c1129;--h-card2:#2a1a3d;--h-text:#f3e8ff}
+html body{background:radial-gradient(circle at 50% 0%,#33165a 0%,#0d0714 65%) fixed !important;color:var(--h-text)}
 h1,h2,.jeux-title{font-family:'Creepster',cursive !important;letter-spacing:2px}
 h1{color:#ffb066;text-shadow:0 0 12px #ff7518,0 0 28px #ff7518}
+::placeholder{color:#9a85b3 !important;opacity:1}
+option{background:#241536;color:#f3e8ff}
 
-/* dégradés violet/rose -> orange/violet */
+/* couleurs */
 .bg-gradient-to-r.from-purple-600,.bg-gradient-to-br.from-purple-600,.from-purple-600.to-pink-600,
-[style*="linear-gradient(135deg,#7c3aed,#ec4899)"],[style*="linear-gradient(135deg,#667eea,#764ba2)"],
-[style*="linear-gradient(135deg,#f093fb,#f5576c)"],[style*="linear-gradient(to right,#7c3aed,#ec4899)"]{
-  background:linear-gradient(135deg,#ff7518,#6b21a8) !important;color:#fff !important}
+[style*="#7c3aed,#ec4899"],[style*="#667eea,#764ba2"],[style*="#f093fb,#f5576c"],[style*="#a855f7,#7c3aed"]{
+  background:linear-gradient(135deg,#ff7518,#6b21a8,#ff7518) !important;background-size:200% 200% !important;
+  color:#fff !important;animation:h-shift 5s ease infinite}
 .bg-clip-text{background:linear-gradient(90deg,#ff9a3c,#c084fc) !important;-webkit-background-clip:text !important;background-clip:text !important;-webkit-text-fill-color:transparent}
-.text-purple-600,.text-purple-700,.text-pink-600,.text-pink-700{color:#ff9a3c !important}
 .bg-purple-600{background:#ff7518 !important}
 .border-purple-600,.border-purple-500{border-color:#ff7518 !important}
-.tab-active{border-bottom-color:#ff7518 !important;color:#ff9a3c !important}
+.tab-active{border-bottom-color:#ff7518 !important;color:#ffb066 !important}
 input:checked+.toggle-slider{background:#ff7518 !important}
 
-/* cartes sombres */
-.bg-white,.avis-card,.bg-gray-50,.bg-gray-100,.bg-purple-50,.bg-purple-100,.bg-pink-100,.bg-orange-50,.bg-red-50{
-  background:var(--h-card) !important;border:1px solid rgba(255,117,24,.25);color:var(--h-text)}
-.bg-white.rounded-2xl,.avis-card{box-shadow:0 0 18px rgba(255,117,24,.12) !important}
-.text-gray-800,.text-gray-700,.text-gray-600,.text-purple-700{color:#f3e8ff !important}
-.text-gray-500,.text-gray-400{color:#b8a3d1 !important}
-.border-gray-200,.border-gray-100{border-color:rgba(255,117,24,.2) !important}
-input,select,textarea{background:#241536 !important;color:#f3e8ff !important;border-color:rgba(255,117,24,.35) !important}
-nav{background:#120a1d !important;border-top:2px solid #ff7518 !important}
-nav button{color:#b8a3d1 !important}
-nav button.text-purple-600{color:#ffb066 !important;background:rgba(255,117,24,.15) !important}
-.avis-card [style*="color:#1f2937"],.avis-card [style*="color:#374151"]{color:#f3e8ff !important}
-.avis-card [style*="background:#faf5ff"],.avis-card [style*="background:#f9fafb"]{background:#2a1a3d !important}
+/* cartes + lisibilité (le JS complète pour les couleurs en ligne) */
+.bg-white,.avis-card,.bg-gray-50,.bg-gray-100,.bg-purple-50,.bg-purple-100,.bg-pink-100,.bg-orange-50,.bg-red-50,.bg-orange-100{
+  background:var(--h-card) !important;border:1px solid rgba(255,117,24,.3);color:var(--h-text)}
+.bg-white.rounded-2xl,.avis-card{box-shadow:0 0 18px rgba(255,117,24,.14) !important;transition:transform .25s,box-shadow .25s}
+.bg-white.rounded-2xl:hover,.avis-card:hover{transform:translateY(-3px) rotate(-.4deg);box-shadow:0 0 30px rgba(255,117,24,.45) !important}
+[class*="text-gray-"],[class*="text-purple-"],[class*="text-pink-"],[class*="text-green-"],[class*="text-blue-"],
+[class*="text-red-"],[class*="text-orange-"],[class*="text-yellow-"]{color:#f3e8ff !important}
+.text-purple-600,.text-purple-700,.text-pink-600,.text-pink-700,.text-orange-500,.text-orange-600{color:#ffa94d !important}
+.text-gray-400,.text-gray-500{color:#c4b0dc !important}
+.border-gray-200,.border-gray-100{border-color:rgba(255,117,24,.25) !important}
+input,select,textarea{background:#241536 !important;color:#f3e8ff !important;border-color:rgba(255,117,24,.4) !important}
+nav{background:#120a1d !important;border-top:2px solid #ff7518 !important;box-shadow:0 -4px 24px rgba(255,117,24,.35)}
+nav button,nav button span{color:#d3c0ea !important}
+nav button.text-purple-600,nav button.text-purple-600 span{color:#ffb066 !important;background:rgba(255,117,24,.18) !important}
+nav button:hover span:first-child{animation:h-bob .6s infinite}
+nav button.text-purple-600 span:first-child{animation:h-bob 1.4s infinite}
 footer{background:linear-gradient(135deg,#050208,#1a0a2a) !important;border-top:3px solid #ff7518}
 
 /* animations */
 @keyframes h-fall{0%{transform:translateY(-10vh) rotate(0);opacity:0}10%{opacity:.9}100%{transform:translateY(110vh) rotate(360deg);opacity:0}}
-@keyframes h-bob{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-8px) rotate(6deg)}}
-@keyframes h-flicker{0%,100%{opacity:1}45%{opacity:.85}50%{opacity:.4}55%{opacity:.9}}
-@keyframes h-glow{0%,100%{box-shadow:0 0 14px #ff7518}50%{box-shadow:0 0 30px #ff7518,0 0 50px #6b21a8}}
-.h-fall{position:fixed;top:-10vh;z-index:5;pointer-events:none;animation:h-fall linear forwards}
-.h-corner{position:fixed;top:0;font-size:2.6rem;z-index:60;pointer-events:none;filter:drop-shadow(0 0 6px #000)}
-.h-bat{animation:h-bob 2.4s ease-in-out infinite}
-#chatbot-btn{animation:h-glow 2s infinite}
-h1,.jeux-title{animation:h-flicker 4s infinite}
-.h-pumpkin-fab{position:fixed;left:14px;bottom:96px;z-index:40;width:52px;height:52px;border-radius:50%;
-  background:#ff7518;font-size:1.8rem;border:none;animation:h-glow 2s infinite,h-bob 3s infinite}
+@keyframes h-bob{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-7px) rotate(6deg)}}
+@keyframes h-flicker{0%,100%{opacity:1}45%{opacity:.85}50%{opacity:.35}55%{opacity:.95}}
+@keyframes h-glow{0%,100%{box-shadow:0 0 14px #ff7518}50%{box-shadow:0 0 32px #ff7518,0 0 54px #6b21a8}}
+@keyframes h-shift{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
+@keyframes h-rise{0%{opacity:0;transform:translateY(40px) scale(.95);filter:blur(6px)}100%{opacity:1;transform:none;filter:none}}
+@keyframes h-fly{0%{transform:translateX(-15vw) translateY(0)}25%{transform:translateX(20vw) translateY(-30px)}50%{transform:translateX(55vw) translateY(20px)}75%{transform:translateX(90vw) translateY(-25px)}100%{transform:translateX(115vw) translateY(0)}}
+@keyframes h-fog{0%{transform:translateX(-10%)}100%{transform:translateX(10%)}}
+@keyframes h-spider{0%,100%{height:40px}50%{height:210px}}
+@keyframes h-drip{0%{height:0}60%{height:var(--d)}100%{height:calc(var(--d) - 6px)}}
+@keyframes h-blink{0%,45%,55%,100%{opacity:1;transform:scaleY(1)}50%{opacity:.8;transform:scaleY(.1)}}
+@keyframes h-spark{to{transform:translate(var(--x),var(--y)) scale(.2);opacity:0}}
+@keyframes h-flash{0%,100%{opacity:0}10%,40%{opacity:.8}25%{opacity:.2}}
+@keyframes h-glitch{0%,92%,100%{text-shadow:0 0 12px #ff7518}94%{text-shadow:3px 0 #a855f7,-3px 0 #ff7518}96%{text-shadow:-3px 0 #a855f7,3px 0 #ff7518}}
+.page.active{animation:h-rise .55s ease both}
+h1,h2{animation:h-glitch 5s infinite}
+#chatbot-btn{animation:h-glow 2s infinite,h-bob 3s infinite}
+#h-fx{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:45}
+.h-fall{position:absolute;top:-10vh;animation:h-fall linear forwards}
+.h-fly{position:absolute;font-size:1.8rem;animation:h-fly linear infinite;filter:drop-shadow(0 0 6px #ff7518)}
+.h-fog{position:absolute;bottom:0;left:-20%;width:140%;height:150px;opacity:.4;
+  background:radial-gradient(ellipse at 20% 100%,#c9b6e8 0,transparent 55%),radial-gradient(ellipse at 70% 100%,#a68fd0 0,transparent 55%);animation:h-fog 9s ease-in-out infinite alternate}
+.h-moon{position:absolute;top:96px;right:10px;width:46px;height:46px;border-radius:50%;opacity:.55;
+  background:radial-gradient(circle at 35% 35%,#fffbe6,#ffe29a 60%,#d9a94a);box-shadow:0 0 30px 8px rgba(255,226,154,.45)}
+.h-web{position:absolute;top:0;left:2px;font-size:2.6rem;filter:drop-shadow(0 0 6px #000)}
+.h-spider{position:absolute;top:0;left:13%;width:2px;background:#cfc3e6;animation:h-spider 7s ease-in-out infinite}
+.h-spider:after{content:'🕷️';position:absolute;bottom:-18px;left:-11px;font-size:1.4rem}
+.h-eyes{position:absolute;font-size:1.6rem;animation:h-blink 2.2s infinite;filter:drop-shadow(0 0 8px #f00)}
+.h-spark{position:absolute;animation:h-spark .8s ease-out forwards;font-size:14px}
+#h-flash{position:absolute;inset:0;background:#fff;opacity:0}
+#h-flash.on{animation:h-flash .7s}
+.h-drips{position:absolute;left:0;right:0;bottom:-2px;height:0;pointer-events:none;z-index:2}
+.h-drips i{position:absolute;top:0;width:9px;border-radius:0 0 9px 9px;background:linear-gradient(#b91c1c,#7f1d1d);animation:h-drip 3.2s ease-in-out infinite alternate;box-shadow:0 2px 6px #0008}
+.h-count{border-radius:18px;padding:14px;text-align:center;font-family:'Creepster',cursive;font-size:1.4rem;color:#fff;
+  background:linear-gradient(135deg,#ff7518,#6b21a8) !important;animation:h-glow 2s infinite}
+.h-tombs{text-align:center;font-size:2rem;letter-spacing:8px;margin-bottom:18px}
+.h-tombs span{display:inline-block;animation:h-bob 3s infinite}
+.h-fab{position:fixed;left:14px;bottom:96px;z-index:40;width:52px;height:52px;border-radius:50%;background:#ff7518;font-size:1.8rem;border:none;animation:h-glow 2s infinite,h-bob 3s infinite}
 .h-jump{position:fixed;inset:0;z-index:9999;background:#000;display:none;align-items:center;justify-content:center;font-size:40vw;cursor:pointer}
 </style>
 
-<div class="h-corner" style="left:4px">🕸️</div>
-<div class="h-corner h-bat" style="right:8px">🦇</div>
-<button class="h-pumpkin-fab" onclick="hBoo()" aria-label="Boo">🎃</button>
+<div id="h-fx">
+  <div class="h-moon"></div>
+  <div class="h-web">🕸️</div>
+  <div class="h-spider"></div>
+  <div class="h-fly" style="top:14%;animation-duration:14s">🦇</div>
+  <div class="h-fly" style="top:42%;animation-duration:19s;animation-delay:-6s;font-size:1.3rem">🦇</div>
+  <div class="h-fly" style="top:68%;animation-duration:27s;animation-delay:-3s;font-size:2.4rem;opacity:.65">👻</div>
+  <div class="h-fog"></div>
+  <div id="h-flash"></div>
+</div>
+<button class="h-fab" onclick="hBoo()" aria-label="Boo">🎃</button>
 <div class="h-jump" id="h-jump" onclick="this.style.display='none'">👻</div>
 
 <script>
 (function(){
-  // titre + textes
+  const fx = document.getElementById('h-fx');
   document.title = '🎃 Brasserie de la Gare - Halloween';
-  const meta = document.querySelector('meta[name="theme-color"]'); if(meta) meta.content = '#0d0714';
+  const mt = document.querySelector('meta[name="theme-color"]'); if(mt) mt.content = '#0d0714';
+
+  // ---- 1) CONTRASTE : fonds clairs -> sombres, textes sombres -> clairs ----
+  const nums = c => (c.match(/[\d.]+/g)||[]).map(Number);
+  const lum = c => { const [r,g,b] = nums(c); return (0.299*r+0.587*g+0.114*b)/255; };
+  const alp = c => { const n = nums(c); return n.length>3 ? n[3] : 1; };
+  function fixContrast(){
+    document.querySelectorAll('body *').forEach(el=>{
+      if(el.closest('#h-fx,.h-jump,script,style')||el.tagName==='SVG') return;
+      const cs = getComputedStyle(el);
+      if(alp(cs.backgroundColor)>.6 && lum(cs.backgroundColor)>.62)
+        el.style.setProperty('background-color','#2a1a3d','important');
+      if(cs.backgroundImage.includes('gradient')){
+        const cols = cs.backgroundImage.match(/rgba?\([^)]+\)/g)||[];
+        if(cols.length && cols.every(c=>alp(c)>.5&&lum(c)>.7))
+          el.style.setProperty('background-image','linear-gradient(135deg,#2a1a3d,#3b1d57)','important');
+      }
+      if([...el.childNodes].some(n=>n.nodeType===3&&n.textContent.trim()) && lum(cs.color)<.58)
+        el.style.setProperty('color','#f3e8ff','important');
+    });
+  }
+  let timer, obs;
+  function schedule(muts){
+    if(muts && muts.every(m=>m.target.closest && m.target.closest('#h-fx'))) return;
+    clearTimeout(timer);
+    timer = setTimeout(()=>{ obs.disconnect(); fixContrast(); observe(); }, 150);
+  }
+  function observe(){ obs.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['style','class']}); }
+  obs = new MutationObserver(schedule);
+
+  // ---- 2) TEXTES ----
+  const JOKES = [
+    "Pourquoi les fantômes ne mentent jamais ? Parce qu'on voit à travers eux ! 👻",
+    "Quel est le plat préféré des vampires ? Le steak bien saignant ! 🧛",
+    "Pourquoi le squelette n'a pas voulu dîner ? Il n'avait pas l'estomac ! 💀",
+    "Que dit la citrouille au chef ? « Tu me fais perdre la tête ! » 🎃",
+    "Quel est le dessert des sorcières ? La crème brûlée... au chaudron ! 🧙‍♀️",
+    "Pourquoi les momies sont stressées ? Elles ont les nerfs à vif... et bandés ! 🧟"
+  ];
+  let hj = new Date().getDate() % JOKES.length;
+  window.showJoke = ()=>{ const e=document.getElementById('daily-joke'); if(e) e.textContent = JOKES[hj]; };
+  window.nextJoke = ()=>{ hj=(hj+1)%JOKES.length; window.showJoke(); };
   function textify(){
     const h1 = document.querySelector('#secret-title h1'); if(h1) h1.textContent = '🎃 Brasserie de la Gare 🎃';
     const sub = document.querySelector('#secret-title p'); if(sub) sub.textContent = 'Vaires-sur-Marne · Nuit des Frissons 👻';
     const w = document.querySelector('[data-i18n="welcome"]'); if(w && currentLang==='fr') w.textContent = 'Bienvenue... si tu oses 🦇';
     const hd = document.querySelector('[data-i18n="home_desc"]');
-    if(hd && currentLang==='fr') hd.textContent = "Bienvenue à la Brasserie de la Gare, version Halloween ! Une cuisine à vous donner des frissons (de plaisir) dans une ambiance ensorcelée. 🕯️";
-    const dj = document.querySelector('#page-home .fa-none'); /* réservé */
-    const jt = document.querySelector('#daily-joke')?.previousElementSibling; /* noop */
-    document.querySelectorAll('h3').forEach(h=>{ if(h.textContent.includes('Blague du chef')) h.textContent='Blague maudite du chef'; });
+    if(hd && currentLang==='fr') hd.textContent = "Bienvenue à la Brasserie de la Gare, version Halloween ! Une cuisine à donner des frissons (de plaisir) dans une ambiance ensorcelée. 🕯️";
+    document.querySelectorAll('h3').forEach(h=>{ if(h.textContent.includes('Blague du chef')) h.textContent='Blague maudite du chef 💀'; });
   }
-  // blagues halloween
-  const HJOKES = [
-    "Pourquoi les fantômes ne mentent jamais ? Parce qu'on voit à travers eux ! 👻",
-    "Quel est le plat préféré des vampires ? Le boudin... et le steak bien saignant ! 🧛",
-    "Pourquoi le squelette n'a pas voulu dîner ? Il n'avait pas l'estomac ! 💀",
-    "Que dit la citrouille au chef ? « Tu me fais perdre la tête ! » 🎃",
-    "Quel est le dessert des sorcières ? La crème brûlée... au chaudron ! 🧙‍♀️",
-    "Pourquoi les momies sont toujours stressées ? Elles ont les nerfs à vif... et bandés ! 🧟"
-  ];
-  const _origJoke = window.showJoke, _origNext = window.nextJoke; let hj = new Date().getDate() % HJOKES.length;
-  window.showJoke = function(){ const e=document.getElementById('daily-joke'); if(e) e.textContent = HJOKES[hj]; };
-  window.nextJoke = function(){ hj=(hj+1)%HJOKES.length; window.showJoke(); };
-  // chauves-souris / citrouilles qui tombent
-  const ICONS = ['🎃','🦇','👻','🕷️','💀','🍬','🕸️'];
-  function drop(){
+
+  // ---- 3) COMPTE À REBOURS ----
+  function countdown(){
+    const home = document.getElementById('page-home'); if(!home || document.getElementById('h-count')) return;
+    const n = new Date(), d = Math.round((new Date(n.getFullYear(),9,31)-new Date(n.getFullYear(),n.getMonth(),n.getDate()))/864e5);
+    const txt = d>0 ? '⏳ J-'+d+' avant Halloween 🎃' : d===0 ? '🎃 C\'est ce soir : HALLOWEEN ! 👻' : '👻 Joyeux Halloween !';
+    const hero = home.firstElementChild;
+    hero.insertAdjacentHTML('afterend','<div id="h-count" class="h-count">'+txt+'</div>');
+  }
+
+  // ---- 4) DÉCORS : gouttes de sang, tombes ----
+  function decor(){
+    const hd = document.querySelector('body > div.shadow-lg');
+    if(hd && !hd.querySelector('.h-drips')){
+      hd.style.position='relative'; hd.style.overflow='visible'; hd.style.zIndex='30';
+      let s=''; for(let i=0;i<22;i++) s+='<i style="left:'+(i*4.6+Math.random()*2)+'%;--d:'+(14+Math.random()*30)+'px;animation-delay:'+(-Math.random()*3)+'s"></i>';
+      hd.insertAdjacentHTML('beforeend','<div class="h-drips">'+s+'</div>');
+    }
+    const ft = document.querySelector('footer');
+    if(ft && !ft.querySelector('.h-tombs'))
+      ft.insertAdjacentHTML('afterbegin','<div class="h-tombs"><span>🪦</span><span style="animation-delay:.3s">⚰️</span><span style="animation-delay:.6s">🧟</span><span style="animation-delay:.9s">🪦</span><span style="animation-delay:1.2s">💀</span><span style="animation-delay:1.5s">🪦</span></div>');
+  }
+
+  // ---- 5) EFFETS ALÉATOIRES ----
+  const ICONS = ['🎃','🦇','👻','🕷️','💀','🍬','🍭','🕸️'];
+  setInterval(()=>{
     if(document.hidden) return;
-    const el = document.createElement('div');
-    el.className = 'h-fall';
-    el.textContent = ICONS[Math.floor(Math.random()*ICONS.length)];
-    el.style.left = Math.random()*100 + 'vw';
-    el.style.fontSize = (16 + Math.random()*22) + 'px';
-    el.style.animationDuration = (6 + Math.random()*6) + 's';
-    document.body.appendChild(el);
-    setTimeout(()=>el.remove(), 13000);
+    const e=document.createElement('div'); e.className='h-fall';
+    e.textContent=ICONS[Math.floor(Math.random()*ICONS.length)];
+    e.style.left=Math.random()*100+'vw'; e.style.fontSize=(16+Math.random()*22)+'px';
+    e.style.animationDuration=(6+Math.random()*6)+'s'; fx.appendChild(e); setTimeout(()=>e.remove(),13000);
+  },1100);
+  setInterval(()=>{            // yeux qui clignent
+    const e=document.createElement('div'); e.className='h-eyes'; e.textContent='👀';
+    e.style.left=(Math.random()<.5?2+Math.random()*8:85+Math.random()*10)+'vw'; e.style.top=(20+Math.random()*55)+'vh';
+    fx.appendChild(e); setTimeout(()=>e.remove(),4500);
+  },9000);
+  function lightning(){
+    const f=document.getElementById('h-flash'); f.classList.remove('on'); void f.offsetWidth; f.classList.add('on');
+    if(navigator.vibrate) navigator.vibrate(80);
+    setTimeout(lightning, 15000+Math.random()*15000);
   }
-  setInterval(drop, 1400);
-  // bouton citrouille : jump scare + confettis orange
-  window.hBoo = function(){
-    const j = document.getElementById('h-jump'); j.style.display='flex';
+  setTimeout(lightning, 8000);
+  // traînée d'étincelles + éclats au toucher
+  let last=0;
+  function spark(x,y,ch,n,spread){
+    for(let i=0;i<n;i++){
+      const s=document.createElement('div'); s.className='h-spark'; s.textContent=ch||['🔥','✨','🧡'][i%3];
+      s.style.left=x+'px'; s.style.top=y+'px';
+      s.style.setProperty('--x',(Math.random()-.5)*spread+'px'); s.style.setProperty('--y',(Math.random()-.2)*spread+'px');
+      fx.appendChild(s); setTimeout(()=>s.remove(),900);
+    }
+  }
+  addEventListener('pointermove',e=>{ const t=Date.now(); if(t-last>70){ last=t; spark(e.clientX,e.clientY,null,1,40); } });
+  addEventListener('pointerdown',e=>{ const c=['🎃','🦇','🍬','👻']; for(let i=0;i<5;i++) spark(e.clientX,e.clientY,c[i%4],1,120); });
+  window.hBoo=()=>{
+    const j=document.getElementById('h-jump'); j.style.display='flex';
     if(navigator.vibrate) navigator.vibrate([120,60,200]);
-    setTimeout(()=>{ j.style.display='none'; }, 1200);
+    setTimeout(()=>{ j.style.display='none'; },1200);
     if(window.launchConfetti) launchConfetti();
   };
-  // réponses du Chef Bot en mode Halloween
-  const _bot = window.getChefBotReply;
-  if(_bot) window.getChefBotReply = function(m){ return _bot(m) + ' 🎃'; };
-  // le quiz/jeux: texte
-  textify();
-  const _go = window.goToPage;
-  window.goToPage = function(p){ _go(p); setTimeout(textify, 30); };
-  window.showJoke();
-  setTimeout(()=>showToast('🎃','Joyeux Halloween !','Bienvenue à la Brasserie hantée 👻'), 1500);
+  if(window.getChefBotReply){ const b=window.getChefBotReply; window.getChefBotReply=m=>b(m)+' 🎃'; }
+
+  // ---- 6) NAVIGATION ----
+  const go = window.goToPage;
+  window.goToPage = p=>{ go(p); setTimeout(()=>{ textify(); countdown(); decor(); },30); };
+
+  textify(); countdown(); decor(); window.showJoke(); fixContrast(); observe();
+  setTimeout(()=>showToast('🎃','Joyeux Halloween !','Bienvenue à la Brasserie hantée 👻'),1500);
 })();
 </script>
-<!-- ============ FIN THÈME HALLOWEEN ============ --></body>
+<!-- ============ FIN THÈME HALLOWEEN v2 ============ --></body>
 </html>
