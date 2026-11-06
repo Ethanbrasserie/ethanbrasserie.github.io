@@ -777,7 +777,7 @@
         <button onclick="goToPage('menu')" class="bg-gradient-to-r from-purple-600 to-pink-600 text-white py-4 rounded-2xl font-bold shadow-lg" data-i18n="discover_menu">🍽️ Notre carte</button>
         <button onclick="goToPage('order')" class="bg-purple-100 text-purple-700 py-4 rounded-2xl font-bold">📦 Commander</button>
     </div>
-    <button onclick="goToPage('reservation')" class="w-full bg-pink-100 text-pink-700 py-3 rounded-xl font-medium" data-i18n="reserve">📅 Réserver une table</button>
+    <button onclick="window.location.href='https://reservation.laddition.com/booking/brasseriedelagare#/date'" class="w-full bg-pink-100 text-pink-700 py-3 rounded-xl font-medium" data-i18n="reserve">📅 Réserver une table</button>
     <div class="bg-white rounded-2xl p-4 shadow-md">
         <div class="flex items-center gap-3 mb-2">
             <span class="text-2xl">😂</span>
@@ -961,38 +961,14 @@
     </div>
 </div>
 
-<!-- PAGE RÉSERVATION -->
+<!-- PAGE RÉSERVATION : REDIRECTION VERS L'ADDITION -->
 <div id="page-reservation" class="page space-y-4">
     <h2 class="text-3xl font-bold text-center bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent" data-i18n="reservation_title">Réserver une table</h2>
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-        <div class="mod-resevation-tool">
-            <div id="hors-hydra-0011i000002kAJVAA2" class="reservation-tool-box">
-                <iframe id="reservationWidget" src="https://reservation.dish.co/widget/hydra-0011i000002kAJVAA2?&amp;eid=hydra-0011i000002kAJVAA2&amp;tagid=hors-hydra-0011i000002kAJVAA2&amp;width=100%25&amp;height=500&amp;foregroundColor=&amp;backgroundColor=rgba(0%2C%200%2C%200%2C%200.2)&amp;linkColor=&amp;errorColor=%23ffa500&amp;primaryButtonForegroundColor=%23fff&amp;primaryButtonBackgroundColor=%239c27b0&amp;secondaryButtonForegroundColor=%23000&amp;secondaryButtonBackgroundColor=%23fff&amp;cookieAcceptanceLevel=2&amp;lang=fr" width="100%" height="500" frameborder="0" style="display:block;">
-                    <p>Your browser does not support iframes.</p>
-                </iframe>
-            </div>
-            <script>
-                var cookieAcceptanceLevelWSB = document.cookie.match(new RegExp('(^| )' + 'cookieAcceptanceLevelWSB' + '=([^;]+)')) || [];
-
-                var _hors=[
-                    ['eid','hydra-0011i000002kAJVAA2'],
-                    ['tagid','hors-hydra-0011i000002kAJVAA2'],
-                    ['width','100%'],
-                    ['height','500'],
-                    ['foregroundColor',''],
-                    ['backgroundColor','rgba(0, 0, 0, 0.2)'],
-                    ['linkColor',''],
-                    ['errorColor','#ffa500'],
-                    ['primaryButtonForegroundColor','#fff'],
-                    ['primaryButtonBackgroundColor','#9c27b0'],
-                    ['secondaryButtonForegroundColor','#000'],
-                    ['secondaryButtonBackgroundColor','#fff'],
-                    ['cookieAcceptanceLevel', cookieAcceptanceLevelWSB[2] || '0'],
-                    ['lang','fr']
-                ];
-                (function(d, t) { var e=d.createElement(t),s=d.getElementsByTagName(t)[0]; e.src = "https://reservation.dish.co/widget.js"; s.parentNode.insertBefore(e,s); }(document, 'script'));
-            </script>
-        </div>
+    <div class="bg-white rounded-2xl shadow-md p-6 text-center">
+        <p class="text-gray-700 mb-4">Vous allez être redirigé vers notre plateforme officielle de réservation.</p>
+        <a href="https://reservation.laddition.com/booking/brasseriedelagare#/date" class="block w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-4 rounded-xl font-bold shadow-lg">
+            📅 Continuer ma réservation
+        </a>
     </div>
     <button onclick="goToPage('home')" class="w-full bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold" data-i18n="back_home">Retour à l'accueil</button>
 </div>
@@ -1323,7 +1299,7 @@
     </div>
     <div class="bg-white rounded-2xl p-5 shadow-md text-center">
         <p class="text-sm text-gray-600 mb-3">Pour réserver votre groupe 👇</p>
-        <button onclick="goToPage('reservation')" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-xl font-semibold">📅 Réserver une table</button>
+        <button onclick="window.location.href='https://reservation.laddition.com/booking/brasseriedelagare#/date'" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-xl font-semibold">📅 Réserver une table</button>
         <a href="tel:0160202401" class="block mt-2 w-full bg-gray-100 text-gray-700 py-3 rounded-xl font-semibold">📞 Appeler directement</a>
     </div>
 </div>
@@ -3885,229 +3861,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 5000);
 });
 </script>
-<!-- ============ THÈME HALLOWEEN v2 ============
-  1) SUPPRIME l'ancien bloc Halloween (de "THÈME HALLOWEEN" à "FIN THÈME HALLOWEEN").
-  2) Colle celui-ci juste avant </body>, après le dernier </script>. -->
-<link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
-<style id="halloween-style">
-:root{--h-card:#1c1129;--h-card2:#2a1a3d;--h-text:#f3e8ff}
-html body{background:radial-gradient(circle at 50% 0%,#33165a 0%,#0d0714 65%) fixed !important;color:var(--h-text)}
-h1,h2,.jeux-title{font-family:'Creepster',cursive !important;letter-spacing:2px}
-h1{color:#ffb066;text-shadow:0 0 12px #ff7518,0 0 28px #ff7518}
-::placeholder{color:#9a85b3 !important;opacity:1}
-option{background:#241536;color:#f3e8ff}
-
-/* couleurs */
-.bg-gradient-to-r.from-purple-600,.bg-gradient-to-br.from-purple-600,.from-purple-600.to-pink-600,
-[style*="#7c3aed,#ec4899"],[style*="#667eea,#764ba2"],[style*="#f093fb,#f5576c"],[style*="#a855f7,#7c3aed"]{
-  background:linear-gradient(135deg,#ff7518,#6b21a8,#ff7518) !important;background-size:200% 200% !important;
-  color:#fff !important;animation:h-shift 5s ease infinite}
-.bg-clip-text{background:linear-gradient(90deg,#ff9a3c,#c084fc) !important;-webkit-background-clip:text !important;background-clip:text !important;-webkit-text-fill-color:transparent}
-.bg-purple-600{background:#ff7518 !important}
-.border-purple-600,.border-purple-500{border-color:#ff7518 !important}
-.tab-active{border-bottom-color:#ff7518 !important;color:#ffb066 !important}
-input:checked+.toggle-slider{background:#ff7518 !important}
-
-/* cartes + lisibilité (le JS complète pour les couleurs en ligne) */
-.bg-white,.avis-card,.bg-gray-50,.bg-gray-100,.bg-purple-50,.bg-purple-100,.bg-pink-100,.bg-orange-50,.bg-red-50,.bg-orange-100{
-  background:var(--h-card) !important;border:1px solid rgba(255,117,24,.3);color:var(--h-text)}
-.bg-white.rounded-2xl,.avis-card{box-shadow:0 0 18px rgba(255,117,24,.14) !important;transition:transform .25s,box-shadow .25s}
-.bg-white.rounded-2xl:hover,.avis-card:hover{transform:translateY(-3px) rotate(-.4deg);box-shadow:0 0 30px rgba(255,117,24,.45) !important}
-[class*="text-gray-"],[class*="text-purple-"],[class*="text-pink-"],[class*="text-green-"],[class*="text-blue-"],
-[class*="text-red-"],[class*="text-orange-"],[class*="text-yellow-"]{color:#f3e8ff !important}
-.text-purple-600,.text-purple-700,.text-pink-600,.text-pink-700,.text-orange-500,.text-orange-600{color:#ffa94d !important}
-.text-gray-400,.text-gray-500{color:#c4b0dc !important}
-.border-gray-200,.border-gray-100{border-color:rgba(255,117,24,.25) !important}
-input,select,textarea{background:#241536 !important;color:#f3e8ff !important;border-color:rgba(255,117,24,.4) !important}
-nav{background:#120a1d !important;border-top:2px solid #ff7518 !important;box-shadow:0 -4px 24px rgba(255,117,24,.35)}
-nav button,nav button span{color:#d3c0ea !important}
-nav button.text-purple-600,nav button.text-purple-600 span{color:#ffb066 !important;background:rgba(255,117,24,.18) !important}
-nav button:hover span:first-child{animation:h-bob .6s infinite}
-nav button.text-purple-600 span:first-child{animation:h-bob 1.4s infinite}
-footer{background:linear-gradient(135deg,#050208,#1a0a2a) !important;border-top:3px solid #ff7518}
-
-/* animations */
-@keyframes h-fall{0%{transform:translateY(-10vh) rotate(0);opacity:0}10%{opacity:.9}100%{transform:translateY(110vh) rotate(360deg);opacity:0}}
-@keyframes h-bob{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-7px) rotate(6deg)}}
-@keyframes h-flicker{0%,100%{opacity:1}45%{opacity:.85}50%{opacity:.35}55%{opacity:.95}}
-@keyframes h-glow{0%,100%{box-shadow:0 0 14px #ff7518}50%{box-shadow:0 0 32px #ff7518,0 0 54px #6b21a8}}
-@keyframes h-shift{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
-@keyframes h-rise{0%{opacity:0;transform:translateY(40px) scale(.95);filter:blur(6px)}100%{opacity:1;transform:none;filter:none}}
-@keyframes h-fly{0%{transform:translateX(-15vw) translateY(0)}25%{transform:translateX(20vw) translateY(-30px)}50%{transform:translateX(55vw) translateY(20px)}75%{transform:translateX(90vw) translateY(-25px)}100%{transform:translateX(115vw) translateY(0)}}
-@keyframes h-fog{0%{transform:translateX(-10%)}100%{transform:translateX(10%)}}
-@keyframes h-spider{0%,100%{height:40px}50%{height:210px}}
-@keyframes h-drip{0%{height:0}60%{height:var(--d)}100%{height:calc(var(--d) - 6px)}}
-@keyframes h-blink{0%,45%,55%,100%{opacity:1;transform:scaleY(1)}50%{opacity:.8;transform:scaleY(.1)}}
-@keyframes h-spark{to{transform:translate(var(--x),var(--y)) scale(.2);opacity:0}}
-@keyframes h-flash{0%,100%{opacity:0}10%,40%{opacity:.8}25%{opacity:.2}}
-@keyframes h-glitch{0%,92%,100%{text-shadow:0 0 12px #ff7518}94%{text-shadow:3px 0 #a855f7,-3px 0 #ff7518}96%{text-shadow:-3px 0 #a855f7,3px 0 #ff7518}}
-.page.active{animation:h-rise .55s ease both}
-h1,h2{animation:h-glitch 5s infinite}
-#chatbot-btn{animation:h-glow 2s infinite,h-bob 3s infinite}
-#h-fx{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:45}
-.h-fall{position:absolute;top:-10vh;animation:h-fall linear forwards}
-.h-fly{position:absolute;font-size:1.8rem;animation:h-fly linear infinite;filter:drop-shadow(0 0 6px #ff7518)}
-.h-fog{position:absolute;bottom:0;left:-20%;width:140%;height:150px;opacity:.4;
-  background:radial-gradient(ellipse at 20% 100%,#c9b6e8 0,transparent 55%),radial-gradient(ellipse at 70% 100%,#a68fd0 0,transparent 55%);animation:h-fog 9s ease-in-out infinite alternate}
-.h-moon{position:absolute;top:96px;right:10px;width:46px;height:46px;border-radius:50%;opacity:.55;
-  background:radial-gradient(circle at 35% 35%,#fffbe6,#ffe29a 60%,#d9a94a);box-shadow:0 0 30px 8px rgba(255,226,154,.45)}
-.h-web{position:absolute;top:0;left:2px;font-size:2.6rem;filter:drop-shadow(0 0 6px #000)}
-.h-spider{position:absolute;top:0;left:13%;width:2px;background:#cfc3e6;animation:h-spider 7s ease-in-out infinite}
-.h-spider:after{content:'🕷️';position:absolute;bottom:-18px;left:-11px;font-size:1.4rem}
-.h-eyes{position:absolute;font-size:1.6rem;animation:h-blink 2.2s infinite;filter:drop-shadow(0 0 8px #f00)}
-.h-spark{position:absolute;animation:h-spark .8s ease-out forwards;font-size:14px}
-#h-flash{position:absolute;inset:0;background:#fff;opacity:0}
-#h-flash.on{animation:h-flash .7s}
-.h-drips{position:absolute;left:0;right:0;bottom:-2px;height:0;pointer-events:none;z-index:2}
-.h-drips i{position:absolute;top:0;width:9px;border-radius:0 0 9px 9px;background:linear-gradient(#b91c1c,#7f1d1d);animation:h-drip 3.2s ease-in-out infinite alternate;box-shadow:0 2px 6px #0008}
-.h-count{border-radius:18px;padding:14px;text-align:center;font-family:'Creepster',cursive;font-size:1.4rem;color:#fff;
-  background:linear-gradient(135deg,#ff7518,#6b21a8) !important;animation:h-glow 2s infinite}
-.h-tombs{text-align:center;font-size:2rem;letter-spacing:8px;margin-bottom:18px}
-.h-tombs span{display:inline-block;animation:h-bob 3s infinite}
-.h-fab{position:fixed;left:14px;bottom:96px;z-index:40;width:52px;height:52px;border-radius:50%;background:#ff7518;font-size:1.8rem;border:none;animation:h-glow 2s infinite,h-bob 3s infinite}
-.h-jump{position:fixed;inset:0;z-index:9999;background:#000;display:none;align-items:center;justify-content:center;font-size:40vw;cursor:pointer}
-</style>
-
-<div id="h-fx">
-  <div class="h-moon"></div>
-  <div class="h-web">🕸️</div>
-  <div class="h-spider"></div>
-  <div class="h-fly" style="top:14%;animation-duration:14s">🦇</div>
-  <div class="h-fly" style="top:42%;animation-duration:19s;animation-delay:-6s;font-size:1.3rem">🦇</div>
-  <div class="h-fly" style="top:68%;animation-duration:27s;animation-delay:-3s;font-size:2.4rem;opacity:.65">👻</div>
-  <div class="h-fog"></div>
-  <div id="h-flash"></div>
-</div>
-<button class="h-fab" onclick="hBoo()" aria-label="Boo">🎃</button>
-<div class="h-jump" id="h-jump" onclick="this.style.display='none'">👻</div>
-
-<script>
-(function(){
-  const fx = document.getElementById('h-fx');
-  document.title = '🎃 Brasserie de la Gare - Halloween';
-  const mt = document.querySelector('meta[name="theme-color"]'); if(mt) mt.content = '#0d0714';
-
-  // ---- 1) CONTRASTE : fonds clairs -> sombres, textes sombres -> clairs ----
-  const nums = c => (c.match(/[\d.]+/g)||[]).map(Number);
-  const lum = c => { const [r,g,b] = nums(c); return (0.299*r+0.587*g+0.114*b)/255; };
-  const alp = c => { const n = nums(c); return n.length>3 ? n[3] : 1; };
-  function fixContrast(){
-    document.querySelectorAll('body *').forEach(el=>{
-      if(el.closest('#h-fx,.h-jump,script,style')||el.tagName==='SVG') return;
-      const cs = getComputedStyle(el);
-      if(alp(cs.backgroundColor)>.6 && lum(cs.backgroundColor)>.62)
-        el.style.setProperty('background-color','#2a1a3d','important');
-      if(cs.backgroundImage.includes('gradient')){
-        const cols = cs.backgroundImage.match(/rgba?\([^)]+\)/g)||[];
-        if(cols.length && cols.every(c=>alp(c)>.5&&lum(c)>.7))
-          el.style.setProperty('background-image','linear-gradient(135deg,#2a1a3d,#3b1d57)','important');
-      }
-      if([...el.childNodes].some(n=>n.nodeType===3&&n.textContent.trim()) && lum(cs.color)<.58)
-        el.style.setProperty('color','#f3e8ff','important');
-    });
-  }
-  let timer, obs;
-  function schedule(muts){
-    if(muts && muts.every(m=>m.target.closest && m.target.closest('#h-fx'))) return;
-    clearTimeout(timer);
-    timer = setTimeout(()=>{ obs.disconnect(); fixContrast(); observe(); }, 150);
-  }
-  function observe(){ obs.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['style','class']}); }
-  obs = new MutationObserver(schedule);
-
-  // ---- 2) TEXTES ----
-  const JOKES = [
-    "Pourquoi les fantômes ne mentent jamais ? Parce qu'on voit à travers eux ! 👻",
-    "Quel est le plat préféré des vampires ? Le steak bien saignant ! 🧛",
-    "Pourquoi le squelette n'a pas voulu dîner ? Il n'avait pas l'estomac ! 💀",
-    "Que dit la citrouille au chef ? « Tu me fais perdre la tête ! » 🎃",
-    "Quel est le dessert des sorcières ? La crème brûlée... au chaudron ! 🧙‍♀️",
-    "Pourquoi les momies sont stressées ? Elles ont les nerfs à vif... et bandés ! 🧟"
-  ];
-  let hj = new Date().getDate() % JOKES.length;
-  window.showJoke = ()=>{ const e=document.getElementById('daily-joke'); if(e) e.textContent = JOKES[hj]; };
-  window.nextJoke = ()=>{ hj=(hj+1)%JOKES.length; window.showJoke(); };
-  function textify(){
-    const h1 = document.querySelector('#secret-title h1'); if(h1) h1.textContent = '🎃 Brasserie de la Gare 🎃';
-    const sub = document.querySelector('#secret-title p'); if(sub) sub.textContent = 'Vaires-sur-Marne · Nuit des Frissons 👻';
-    const w = document.querySelector('[data-i18n="welcome"]'); if(w && currentLang==='fr') w.textContent = 'Bienvenue... si tu oses 🦇';
-    const hd = document.querySelector('[data-i18n="home_desc"]');
-    if(hd && currentLang==='fr') hd.textContent = "Bienvenue à la Brasserie de la Gare, version Halloween ! Une cuisine à donner des frissons (de plaisir) dans une ambiance ensorcelée. 🕯️";
-    document.querySelectorAll('h3').forEach(h=>{ if(h.textContent.includes('Blague du chef')) h.textContent='Blague maudite du chef 💀'; });
-  }
-
-  // ---- 3) COMPTE À REBOURS ----
-  function countdown(){
-    const home = document.getElementById('page-home'); if(!home || document.getElementById('h-count')) return;
-    const n = new Date(), d = Math.round((new Date(n.getFullYear(),9,31)-new Date(n.getFullYear(),n.getMonth(),n.getDate()))/864e5);
-    const txt = d>0 ? '⏳ J-'+d+' avant Halloween 🎃' : d===0 ? '🎃 C\'est ce soir : HALLOWEEN ! 👻' : '👻 Joyeux Halloween !';
-    const hero = home.firstElementChild;
-    hero.insertAdjacentHTML('afterend','<div id="h-count" class="h-count">'+txt+'</div>');
-  }
-
-  // ---- 4) DÉCORS : gouttes de sang, tombes ----
-  function decor(){
-    const hd = document.querySelector('body > div.shadow-lg');
-    if(hd && !hd.querySelector('.h-drips')){
-      hd.style.position='relative'; hd.style.overflow='visible'; hd.style.zIndex='30';
-      let s=''; for(let i=0;i<22;i++) s+='<i style="left:'+(i*4.6+Math.random()*2)+'%;--d:'+(14+Math.random()*30)+'px;animation-delay:'+(-Math.random()*3)+'s"></i>';
-      hd.insertAdjacentHTML('beforeend','<div class="h-drips">'+s+'</div>');
-    }
-    const ft = document.querySelector('footer');
-    if(ft && !ft.querySelector('.h-tombs'))
-      ft.insertAdjacentHTML('afterbegin','<div class="h-tombs"><span>🪦</span><span style="animation-delay:.3s">⚰️</span><span style="animation-delay:.6s">🧟</span><span style="animation-delay:.9s">🪦</span><span style="animation-delay:1.2s">💀</span><span style="animation-delay:1.5s">🪦</span></div>');
-  }
-
-  // ---- 5) EFFETS ALÉATOIRES ----
-  const ICONS = ['🎃','🦇','👻','🕷️','💀','🍬','🍭','🕸️'];
-  setInterval(()=>{
-    if(document.hidden) return;
-    const e=document.createElement('div'); e.className='h-fall';
-    e.textContent=ICONS[Math.floor(Math.random()*ICONS.length)];
-    e.style.left=Math.random()*100+'vw'; e.style.fontSize=(16+Math.random()*22)+'px';
-    e.style.animationDuration=(6+Math.random()*6)+'s'; fx.appendChild(e); setTimeout(()=>e.remove(),13000);
-  },1100);
-  setInterval(()=>{            // yeux qui clignent
-    const e=document.createElement('div'); e.className='h-eyes'; e.textContent='👀';
-    e.style.left=(Math.random()<.5?2+Math.random()*8:85+Math.random()*10)+'vw'; e.style.top=(20+Math.random()*55)+'vh';
-    fx.appendChild(e); setTimeout(()=>e.remove(),4500);
-  },9000);
-  function lightning(){
-    const f=document.getElementById('h-flash'); f.classList.remove('on'); void f.offsetWidth; f.classList.add('on');
-    if(navigator.vibrate) navigator.vibrate(80);
-    setTimeout(lightning, 15000+Math.random()*15000);
-  }
-  setTimeout(lightning, 8000);
-  // traînée d'étincelles + éclats au toucher
-  let last=0;
-  function spark(x,y,ch,n,spread){
-    for(let i=0;i<n;i++){
-      const s=document.createElement('div'); s.className='h-spark'; s.textContent=ch||['🔥','✨','🧡'][i%3];
-      s.style.left=x+'px'; s.style.top=y+'px';
-      s.style.setProperty('--x',(Math.random()-.5)*spread+'px'); s.style.setProperty('--y',(Math.random()-.2)*spread+'px');
-      fx.appendChild(s); setTimeout(()=>s.remove(),900);
-    }
-  }
-  addEventListener('pointermove',e=>{ const t=Date.now(); if(t-last>70){ last=t; spark(e.clientX,e.clientY,null,1,40); } });
-  addEventListener('pointerdown',e=>{ const c=['🎃','🦇','🍬','👻']; for(let i=0;i<5;i++) spark(e.clientX,e.clientY,c[i%4],1,120); });
-  window.hBoo=()=>{
-    const j=document.getElementById('h-jump'); j.style.display='flex';
-    if(navigator.vibrate) navigator.vibrate([120,60,200]);
-    setTimeout(()=>{ j.style.display='none'; },1200);
-    if(window.launchConfetti) launchConfetti();
-  };
-  if(window.getChefBotReply){ const b=window.getChefBotReply; window.getChefBotReply=m=>b(m)+' 🎃'; }
-
-  // ---- 6) NAVIGATION ----
-  const go = window.goToPage;
-  window.goToPage = p=>{ go(p); setTimeout(()=>{ textify(); countdown(); decor(); },30); };
-
-  textify(); countdown(); decor(); window.showJoke(); fixContrast(); observe();
-  setTimeout(()=>showToast('🎃','Joyeux Halloween !','Bienvenue à la Brasserie hantée 👻'),1500);
-})();
-</script>
-<!-- ============ FIN THÈME HALLOWEEN v2 ============ --><!-- ===== RETRAIT CLICK & COLLECT =====
-  À coller JUSTE APRÈS le bloc "THÈME HALLOWEEN v2" (avant </body>). -->
+<!-- ===== RETRAIT CLICK & COLLECT =====
+  Suppression des commandes en ligne. -->
 <script>
 (function(){
   const kill = el => el && el.remove();
@@ -4126,7 +3881,7 @@ h1,h2{animation:h-glitch 5s infinite}
   if(window.getChefBotReply){
     const b = window.getChefBotReply;
     window.getChefBotReply = m => /command|emporter|collect/.test(m)
-      ? "Pour toute demande, appelez-nous au 01 60 20 24 01 ou réservez une table ! 🎃" : b(m);
+      ? "Pour toute demande, appelez-nous au 01 60 20 24 01 ou réservez une table ! 🎄" : b(m);
   }
   // neutralise les fonctions restantes
   window.validerCommande = window.envoyerNotifNtfy = window.envoyerNotifNtfyPret = ()=>{};
@@ -4134,10 +3889,10 @@ h1,h2{animation:h-glitch 5s infinite}
 })();
 </script>
 <!-- ===== FIN RETRAIT CLICK & COLLECT ===== --><!-- ===== PHOTOS DE LA GALERIE =====
-  À coller avant </body>, après les autres blocs (thème Halloween, retrait Click & Collect). -->
+  À coller avant </body>, après les autres blocs (thème de Noël et retrait Click & Collect). -->
 <style>
-#gallery-container > div{border:2px solid #ff7518;box-shadow:0 0 14px rgba(255,117,24,.35);transition:transform .25s,box-shadow .25s}
-#gallery-container > div:hover{transform:scale(1.04) rotate(-1.5deg);box-shadow:0 0 28px rgba(255,117,24,.8)}
+#gallery-container > div{border:2px solid #f4c542;box-shadow:0 0 14px rgba(244,197,66,.35);transition:transform .25s,box-shadow .25s}
+#gallery-container > div:hover{transform:scale(1.04) rotate(-1.5deg);box-shadow:0 0 28px rgba(244,197,66,.8)}
 </style>
 <script>
 (function(){
@@ -4166,95 +3921,247 @@ h1,h2{animation:h-glitch 5s infinite}
   else seed();
 })();
 </script>
-<!-- ===== FIN PHOTOS DE LA GALERIE ===== --><!-- ===== AVERTISSEMENT CARTE + JEUX HALLOWEEN =====
-  À coller avant </body>, après les autres blocs. -->
+<!-- ===== FIN PHOTOS DE LA GALERIE ===== --><!-- ===== AVERTISSEMENT CARTE + ANIMATIONS DE NOËL ===== -->
 <style>
-.h-notice{border:3px solid #ff7518;border-radius:20px;padding:20px 18px;text-align:center;background:linear-gradient(135deg,#1c1129,#2a1a3d) !important;
-  animation:h-glow 2.4s infinite;color:#f3e8ff}
-.h-notice .ico{font-size:2.6rem;display:block;animation:h-bob 2.5s infinite}
-.h-notice .ttl{font-family:'Creepster',cursive;font-size:1.9rem;letter-spacing:2px;color:#ffb066;margin:6px 0 10px;text-shadow:0 0 14px #ff7518}
-.h-notice p{font-size:1.05rem;line-height:1.6;margin:6px 0;color:#f3e8ff !important}
-.h-notice strong{color:#ffb066}
-.h-notice a{display:inline-block;margin-top:10px;padding:10px 18px;border-radius:12px;background:#ff7518;color:#1a0a2a !important;font-weight:800;text-decoration:none}
-.hg-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,117,24,.45);border-radius:20px;padding:18px;color:#fff;text-align:center}
-.hg-arena{position:relative;height:260px;border-radius:14px;overflow:hidden;margin:12px 0;touch-action:manipulation;
-  background:radial-gradient(circle at 50% 100%,#4a1d7a,#12071f);border:1px solid rgba(255,117,24,.35)}
+.h-notice{border:3px solid #f4c542;border-radius:20px;padding:20px 18px;text-align:center;background:linear-gradient(135deg,#0f2e24,#164535) !important;color:#fdf6e3;box-shadow:0 0 24px rgba(244,197,66,.25)}
+.h-notice .ico{font-size:2.6rem;display:block;animation:x-bob 2.5s infinite}
+.h-notice .ttl{font-family:'Mountains of Christmas',cursive;font-size:1.9rem;letter-spacing:2px;color:#f4c542;margin:6px 0 10px;text-shadow:0 0 14px #f4c542}
+.h-notice p{font-size:1.05rem;line-height:1.6;margin:6px 0;color:#fdf6e3 !important}
+.h-notice strong{color:#f4c542}
+.h-notice a{display:inline-block;margin-top:10px;padding:10px 18px;border-radius:12px;background:#f4c542;color:#0f2e24 !important;font-weight:800;text-decoration:none}
+.hg-card{background:linear-gradient(135deg,#0f2e24,#164535);border:2px solid rgba(244,197,66,.65);border-radius:20px;padding:18px;color:#fff;text-align:center;box-shadow:0 0 22px rgba(244,197,66,.2)}
+.hg-arena{position:relative;height:260px;border-radius:14px;overflow:hidden;margin:12px 0;touch-action:manipulation;background:radial-gradient(circle at 50% 100%,#176447,#08251b);border:1px solid rgba(244,197,66,.5)}
 .hg-item{position:absolute;font-size:2.4rem;cursor:pointer;user-select:none;animation:hg-pop .25s ease-out}
 @keyframes hg-pop{from{transform:scale(0)}to{transform:scale(1)}}
-.hg-btn{width:100%;padding:13px;border:none;border-radius:12px;font-weight:800;color:#fff;cursor:pointer;background:linear-gradient(135deg,#ff7518,#6b21a8)}
+.hg-btn{width:100%;padding:13px;border:2px solid #f4c542;border-radius:12px;font-weight:800;color:#fff;cursor:pointer;background:linear-gradient(135deg,#c1121f,#0b6b4a)}
 </style>
 <script>
 (function(){
-  // ---------- 1) AVERTISSEMENT SUR LA CARTE ----------
+  // Information pratique sur la carte
   const menu = document.getElementById('page-menu');
   if(menu && !document.getElementById('h-notice')){
-    menu.querySelector('h2').insertAdjacentHTML('afterend',
+    const title = menu.querySelector('h2');
+    if(title) title.insertAdjacentHTML('afterend',
       '<div id="h-notice" class="h-notice">'
-      + '<span class="ico">⚠️</span>'
+      + '<span class="ico">🎄</span>'
       + '<div class="ttl">Information importante</div>'
-      + '<p><strong>Notre carte change très souvent</strong> : plats, suppléments et prix évoluent au fil des saisons et de l\'approvisionnement.</p>'
+      + '<p><strong>Notre carte change très souvent</strong> : plats, suppléments et prix évoluent au fil des saisons et de l’approvisionnement.</p>'
       + '<p>Les créateurs de ce site <strong>ne peuvent pas être informés de chaque modification</strong> : certains plats ou tarifs affichés peuvent ne plus être à jour.</p>'
       + '<p>La carte présentée sur place fait foi. Pour une allergie ou une information précise, adressez-vous à notre équipe.</p>'
       + '<a href="tel:0160202401">📞 Nous appeler : 01 60 20 24 01</a>'
       + '</div>');
   }
 
-  // ---------- 2) QUIZ : questions brasserie + Halloween ----------
+  // Quiz spécial brasserie et Noël
   if(typeof QUIZ !== 'undefined'){
     QUIZ.splice(0, QUIZ.length,
       { q:'Quelle est la spécialité emblématique de la brasserie ?', r:['Pizza','BG Burger','Sushi'], a:1 },
       { q:'À quelle heure ouvre la brasserie le samedi ?', r:['8h00','7h00','9h00'], a:0 },
       { q:'Quel dessert est fait à la vanille de Madagascar ?', r:['Moelleux au chocolat','Café gourmand','Crème brûlée'], a:2 },
-      { q:'Quelle date est Halloween ?', r:['21 octobre','1er novembre','31 octobre'], a:2 },
-      { q:'Quel fruit sculpte-t-on traditionnellement à Halloween ?', r:['La citrouille','La pastèque','L\'ananas'], a:0 },
-      { q:'Quel animal est associé aux vampires ?', r:['Le dauphin','La chauve-souris','La girafe'], a:1 },
-      { q:'D\'où vient la tradition d\'Halloween ?', r:['Du Brésil','Du Japon','D\'Irlande (fête celtique Samain)'], a:2 }
+      { q:'Quelle date célèbre-t-on Noël ?', r:['24 décembre','25 décembre','31 décembre'], a:1 },
+      { q:'Quel personnage apporte traditionnellement les cadeaux ?', r:['Le Père Noël','Le lapin de Pâques','Un renne'], a:0 },
+      { q:'Quel animal tire le traîneau du Père Noël ?', r:['Un cheval','Des rennes','Des pingouins'], a:1 },
+      { q:'Quelle plante décore souvent les maisons à Noël ?', r:['Un cactus','Du houx','Un palmier'], a:1 }
     );
   }
-  const st = document.querySelector('.jeux-subtitle'); if(st) st.textContent = 'Spécial Halloween 🎃 · Brasserie de la Gare';
+  const subtitle = document.querySelector('.jeux-subtitle');
+  if(subtitle) subtitle.textContent = 'Spécial Noël 🎄 · Brasserie de la Gare';
 
-  // ---------- 3) MINI-JEU : ATTRAPE LES CITROUILLES ----------
+  // Mini-jeu : attrape les cadeaux
   const qr = document.getElementById('quiz-result');
   if(qr && !document.getElementById('hg-card')){
     qr.insertAdjacentHTML('afterend',
       '<div id="hg-card" class="hg-card">'
-      + '<div style="font-size:2rem">🎃</div>'
-      + '<div style="font-weight:800;font-size:1.05rem">Attrape les citrouilles !</div>'
-      + '<div style="font-size:.75rem;opacity:.7;margin-top:2px">🎃 +1 · 🍬 +3 · 👻 −2 · 20 secondes</div>'
+      + '<div style="font-size:2rem">🎁🎄</div>'
+      + '<div style="font-weight:800;font-size:1.05rem">Attrape les cadeaux !</div>'
+      + '<div style="font-size:.75rem;opacity:.8;margin-top:2px">🎁 +1 · ⭐ +3 · 🧦 −2 · 20 secondes</div>'
       + '<div style="display:flex;justify-content:space-around;margin-top:10px;font-weight:800">'
-      +   '<span>⏱️ <b id="hg-time">20</b>s</span><span>Score : <b id="hg-score">0</b></span><span>🏆 <b id="hg-best">0</b></span></div>'
-      + '<div id="hg-arena" class="hg-arena"><div id="hg-msg" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:.6;font-size:.9rem">Appuie sur Jouer pour commencer</div></div>'
-      + '<button class="hg-btn" onclick="hgStart()">🎮 Jouer</button></div>');
-    document.getElementById('hg-best').textContent = localStorage.getItem('brasserie_halloween_best') || 0;
+      + '<span>⏱️ <b id="hg-time">20</b>s</span><span>Score : <b id="hg-score">0</b></span><span>🏆 <b id="hg-best">0</b></span></div>'
+      + '<div id="hg-arena" class="hg-arena"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:.75;font-size:.9rem">Appuie sur Jouer pour commencer</div></div>'
+      + '<button class="hg-btn" onclick="hgStart()">🎮 Jouer au défi de Noël</button></div>');
+    document.getElementById('hg-best').textContent = localStorage.getItem('brasserie_noel_best') || 0;
   }
+
   let score=0, time=20, tick=null, spawn=null;
   window.hgStart = function(){
     clearInterval(tick); clearInterval(spawn);
     score=0; time=20;
-    const arena = document.getElementById('hg-arena'); arena.innerHTML='';
-    document.getElementById('hg-score').textContent=0; document.getElementById('hg-time').textContent=time;
-    spawn = setInterval(()=>{
-      const r = Math.random(), kind = r<.12 ? ['🍬',3] : r<.35 ? ['👻',-2] : ['🎃',1];
-      const it = document.createElement('div'); it.className='hg-item'; it.textContent=kind[0];
-      it.style.left = Math.random()*(arena.clientWidth-50)+'px'; it.style.top = Math.random()*(arena.clientHeight-50)+'px';
-      it.addEventListener('pointerdown', e=>{
+    const arena=document.getElementById('hg-arena');
+    if(!arena) return;
+    arena.innerHTML='';
+    document.getElementById('hg-score').textContent='0';
+    document.getElementById('hg-time').textContent='20';
+    const items=[['🎁',1],['⭐',3],['🧦',-2],['🔔',1],['🍬',1],['🎄',2]];
+    spawn=setInterval(()=>{
+      const kind=items[Math.floor(Math.random()*items.length)];
+      const it=document.createElement('div'); it.className='hg-item'; it.textContent=kind[0];
+      it.style.left=Math.random()*Math.max(0,arena.clientWidth-50)+'px';
+      it.style.top=Math.random()*Math.max(0,arena.clientHeight-50)+'px';
+      it.addEventListener('pointerdown',e=>{
         e.stopPropagation(); score=Math.max(0,score+kind[1]);
         document.getElementById('hg-score').textContent=score; it.remove();
-        if(navigator.vibrate && kind[1]<0) navigator.vibrate(60);
       });
-      arena.appendChild(it); setTimeout(()=>it.remove(), 1100);
-    }, 520);
-    tick = setInterval(()=>{
+      arena.appendChild(it); setTimeout(()=>it.remove(),1100);
+    },520);
+    tick=setInterval(()=>{
       time--; document.getElementById('hg-time').textContent=time;
       if(time<=0){
-        clearInterval(tick); clearInterval(spawn); arena.innerHTML='';
-        const best = +localStorage.getItem('brasserie_halloween_best')||0;
-        const rec = score>best; if(rec){ localStorage.setItem('brasserie_halloween_best',score); document.getElementById('hg-best').textContent=score; if(window.launchConfetti) launchConfetti(); }
-        arena.innerHTML = '<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px"><div style="font-size:2.4rem">'+(rec?'🏆':'💀')+'</div><div style="font-weight:800;font-size:1.3rem">'+score+' points</div><div style="font-size:.8rem;opacity:.7">'+(rec?'Nouveau record !':'Rejoue pour battre ton record')+'</div></div>';
+        clearInterval(tick); clearInterval(spawn);
+        const best=+localStorage.getItem('brasserie_noel_best')||0;
+        const record=score>best;
+        if(record){localStorage.setItem('brasserie_noel_best',score);document.getElementById('hg-best').textContent=score;if(window.launchConfetti)launchConfetti();}
+        arena.innerHTML='<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px"><div style="font-size:2.4rem">'+(record?'🏆':'🎄')+'</div><div style="font-weight:800;font-size:1.3rem">'+score+' points</div><div style="font-size:.8rem;opacity:.8">'+(record?'Nouveau record !':'Rejoue pour battre ton record')+'</div></div>';
       }
     },1000);
   };
 })();
 </script>
-<!-- ===== FIN AVERTISSEMENT CARTE + JEUX ===== --></body>
+<!-- ===== FIN AVERTISSEMENT CARTE + ANIMATIONS DE NOËL ===== --><!-- ============ MODE NOËL EXTRÊME ============ -->
+<link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&display=swap" rel="stylesheet">
+<style id="x-style">
+:root{--c:#0f2e24;--t:#fdf6e3;--g:#f4c542;--r:#c1121f}
+html body{background:linear-gradient(120deg,#06231a,#0b3d2e,#4a0a16,#06231a) fixed !important;background-size:400% 400% !important;animation:x-aurora 16s ease infinite;color:var(--t)}
+h1,h2,.jeux-title{font-family:'Mountains of Christmas',cursive !important}
+h1{background:linear-gradient(90deg,#fff,#f4c542,#ff4d4d,#fff);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:x-shine 4s linear infinite;font-size:1.6rem !important;filter:drop-shadow(0 0 8px #f4c542)}
+::placeholder{color:#8fb5a4 !important;opacity:1} option{background:#0f2e24;color:#fdf6e3}
+.bg-gradient-to-r.from-purple-600,.bg-gradient-to-br.from-purple-600,.from-purple-600.to-pink-600,
+[style*="#7c3aed,#ec4899"],[style*="#667eea,#764ba2"],[style*="#f093fb,#f5576c"],[style*="#a855f7,#7c3aed"],[style*="#ff7518"]{
+  background:linear-gradient(135deg,#c1121f,#0b6b4a,#c1121f) !important;background-size:200% 200% !important;color:#fff !important;animation:x-shift 5s ease infinite}
+.bg-clip-text{background:linear-gradient(90deg,#f4c542,#ff6b6b) !important;-webkit-background-clip:text !important;background-clip:text !important;-webkit-text-fill-color:transparent}
+.bg-purple-600{background:#c1121f !important} .border-purple-600,.border-purple-500{border-color:var(--g) !important}
+.tab-active{border-bottom-color:var(--g) !important;color:var(--g) !important}
+.bg-white,.avis-card,.bg-gray-50,.bg-gray-100,.bg-purple-50,.bg-purple-100,.bg-pink-100,.bg-orange-50,.bg-red-50,.bg-orange-100{
+  background:var(--c) !important;border:1px solid rgba(244,197,66,.45);color:var(--t);box-shadow:0 0 16px rgba(244,197,66,.15) !important;transition:transform .25s,box-shadow .25s}
+.bg-white.rounded-2xl:hover,.avis-card:hover{transform:translateY(-4px) rotate(.6deg) scale(1.01);box-shadow:0 0 34px rgba(244,197,66,.55) !important}
+[class*="text-gray-"],[class*="text-purple-"],[class*="text-pink-"],[class*="text-green-"],[class*="text-blue-"],[class*="text-red-"],[class*="text-orange-"],[class*="text-yellow-"]{color:var(--t) !important}
+.text-purple-600,.text-purple-700,.text-pink-600,.text-pink-700{color:var(--g) !important}
+.text-gray-400,.text-gray-500{color:#b5d3c5 !important}
+.border-gray-200,.border-gray-100{border-color:rgba(244,197,66,.3) !important}
+input,select,textarea{background:#0a2219 !important;color:var(--t) !important;border-color:rgba(244,197,66,.5) !important}
+nav{background:#07261c !important;border-top:2px solid var(--g) !important;box-shadow:0 -4px 26px rgba(244,197,66,.4)}
+nav button,nav button span{color:#cfe5d9 !important}
+nav button.text-purple-600,nav button.text-purple-600 span{color:var(--g) !important;background:rgba(244,197,66,.18) !important}
+nav button.text-purple-600 span:first-child{animation:x-bob 1.2s infinite}
+footer{background:linear-gradient(135deg,#031510,#0b3d2e) !important;border-top:3px solid var(--g)}
+#gallery-container > div{border:2px solid var(--g) !important;box-shadow:0 0 14px rgba(244,197,66,.45) !important}
+.h-notice{border-color:var(--g) !important;background:var(--c) !important}.h-notice .ttl{color:var(--g) !important;font-family:'Mountains of Christmas',cursive !important}.h-notice a{background:var(--g) !important}
+@keyframes h-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes h-glow{0%,100%{box-shadow:0 0 14px #f4c542}50%{box-shadow:0 0 34px #f4c542,0 0 50px #c1121f}}
+@keyframes x-aurora{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
+@keyframes x-shine{to{background-position:300% 0}}
+@keyframes x-shift{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
+@keyframes x-bob{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-8px) rotate(6deg)}}
+@keyframes x-rise{0%{opacity:0;transform:translateY(40px) scale(.94)}100%{opacity:1;transform:none}}
+@keyframes x-hue{0%{filter:hue-rotate(0) brightness(1)}50%{filter:hue-rotate(140deg) brightness(1.6)}100%{filter:hue-rotate(360deg) brightness(1)}}
+@keyframes x-fall{0%{transform:translateY(-10vh) rotate(0);opacity:0}8%{opacity:1}100%{transform:translateY(112vh) rotate(540deg);opacity:.9}}
+@keyframes x-fly{0%{transform:translate(-30vw,0)}30%{transform:translate(125vw,-60px)}100%{transform:translate(125vw,-60px)}}
+@keyframes x-pop{to{transform:translate(var(--x),var(--y)) scale(.1);opacity:0}}
+@keyframes x-tick{from{transform:translateX(100vw)}to{transform:translateX(-100%)}}
+@keyframes x-sway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+.page.active{animation:x-rise .5s ease both}
+#chatbot-btn{animation:h-glow 2s infinite,x-bob 3s infinite}
+#x-fx{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:45}
+#x-snow{position:fixed;inset:0;pointer-events:none;z-index:44}
+.x-s{position:fixed;z-index:46;pointer-events:none;animation:x-hue 3s linear infinite}
+.x-top{top:0;left:0;right:0;height:14px;background:radial-gradient(circle,#ff2e2e 4px,transparent 5px) 0 0/28px 14px}
+.x-l{top:0;bottom:0;left:0;width:14px;background:radial-gradient(circle,#3bd16f 4px,transparent 5px) 0 0/14px 28px;animation-delay:-1s}
+.x-r{top:0;bottom:0;right:0;width:14px;background:radial-gradient(circle,#4da3ff 4px,transparent 5px) 0 0/14px 28px;animation-delay:-2s}
+.x-pile{position:fixed;left:0;right:0;bottom:56px;height:38px;z-index:43;pointer-events:none;background:radial-gradient(ellipse 36px 22px at 18px 100%,#fff 98%,transparent) 0 0/54px 38px repeat-x;opacity:.92}
+.x-fall{position:absolute;top:-10vh;animation:x-fall linear forwards;filter:drop-shadow(0 0 6px #fff8)}
+.x-sleigh{position:absolute;top:11%;left:0;font-size:2.4rem;white-space:nowrap;animation:x-fly 30s linear infinite;filter:drop-shadow(0 0 10px #f4c542)}
+.x-sleigh:after{content:'✨✨✨✨';position:absolute;right:100%;top:6px;font-size:1rem;letter-spacing:6px;opacity:.8}
+.x-deco{position:fixed;bottom:60px;z-index:47;pointer-events:none;font-size:3.6rem;filter:drop-shadow(0 0 12px #f4c542)}
+.x-tree{left:4px;animation:x-sway 4s ease-in-out infinite;transform-origin:bottom}
+.x-man{right:78px;animation:x-bob 3s ease-in-out infinite}
+.x-pt{position:absolute;border-radius:50%;animation:x-pop .9s ease-out forwards}
+.x-em{position:absolute;font-size:18px;animation:x-pop 1s ease-out forwards}
+.x-ticker{background:linear-gradient(90deg,#c1121f,#0b6b4a,#c1121f);overflow:hidden;white-space:nowrap;padding:6px 0;margin-top:14px;font-weight:800;border-block:2px solid var(--g)}
+.x-ticker span{display:inline-block;animation:x-tick 22s linear infinite;color:#fff}
+.x-card{border-radius:18px;padding:14px;text-align:center;background:linear-gradient(135deg,#c1121f,#0b6b4a) !important;animation:h-glow 2s infinite;color:#fff}
+.x-card b{font-family:'Mountains of Christmas',cursive;font-size:1.7rem;display:block}
+.x-cd{display:flex;gap:8px;justify-content:center;margin-top:6px}.x-cd div{background:#0a2219;border:1px solid var(--g);border-radius:10px;padding:6px 8px;min-width:56px}
+.x-cd i{display:block;font-style:normal;font-size:1.4rem;font-weight:800}.x-cd s{text-decoration:none;font-size:.6rem;color:var(--g);text-transform:uppercase}
+.x-fab{position:fixed;left:70px;bottom:130px;z-index:48;width:44px;height:44px;border-radius:50%;border:none;font-size:1.3rem;background:#c1121f;animation:h-glow 2s infinite}
+</style>
+<div class="x-s x-top"></div><div class="x-s x-l"></div><div class="x-s x-r"></div>
+<div class="x-pile"></div>
+<div class="x-deco x-tree">🎄🎁</div><div class="x-deco x-man">⛄</div>
+<canvas id="x-snow"></canvas>
+<div id="x-fx"><div class="x-sleigh">🦌🦌🦌🛷🎅</div></div>
+<button class="x-fab" id="x-mute" aria-label="Musique">🎵</button>
+<script>
+(function(){
+  const $ = id => document.getElementById(id), fx = $('x-fx');
+  if(!fx || $('x-style')?.dataset.active) return;
+  $('x-style').dataset.active='1';
+  document.title = '🎄 Brasserie de la Gare — Joyeux Noël !';
+  const mt = document.querySelector('meta[name="theme-color"]'); if(mt) mt.content = '#06231a';
+
+  const nums=c=>(c.match(/[\d.]+/g)||[]).map(Number), lum=c=>{const [r,g,b]=nums(c);return (.299*r+.587*g+.114*b)/255}, alp=c=>{const n=nums(c);return n.length>3?n[3]:1};
+  function fix(){ document.querySelectorAll('body *').forEach(el=>{
+    if(el.closest('#x-fx,script,style')||el.tagName==='SVG'||el.tagName==='CANVAS'||el.classList.contains('x-s')) return;
+    const cs=getComputedStyle(el);
+    if(alp(cs.backgroundColor)>.6&&lum(cs.backgroundColor)>.62) el.style.setProperty('background-color','#164535','important');
+    if(cs.backgroundImage.includes('gradient')){const k=cs.backgroundImage.match(/rgba?\([^)]+\)/g)||[]; if(k.length&&k.every(c=>alp(c)>.5&&lum(c)>.7)) el.style.setProperty('background-image','linear-gradient(135deg,#0f2e24,#164535)','important');}
+    if([...el.childNodes].some(n=>n.nodeType===3&&n.textContent.trim())&&lum(cs.color)<.58) el.style.setProperty('color','#fdf6e3','important');
+  });}
+  let tm; const ob=new MutationObserver(m=>{if(m.every(x=>x.target.closest&&x.target.closest('#x-fx')))return;clearTimeout(tm);tm=setTimeout(()=>{ob.disconnect();fix();w();},150);});
+  const w=()=>ob.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['style','class']});
+
+  const J=["Que dit un sapin qui a froid ? « Je suis conifère... » 🎄","Quel est le comble du Père Noël ? Avoir la hotte à l'envers ! 🎅","Pourquoi les rennes adorent la brasserie ? Pour les « bois » de saison ! 🦌","Que dit un bonhomme de neige devant un chocolat chaud ? « Pitié ! » ⛄","Pourquoi le Père Noël rit tout le temps ? Parce qu'il est bien... ho ho ho ! 🎁"];
+  let j=new Date().getDate()%J.length;
+  window.showJoke=()=>{const e=$('daily-joke');if(e)e.textContent=J[j];};
+  window.nextJoke=()=>{j=(j+1)%J.length;window.showJoke();};
+  function textify(){
+    const h=document.querySelector('#secret-title h1');if(h)h.textContent='🎄 Brasserie de la Gare 🎄';
+    const sub=document.querySelector('#secret-title p');if(sub)sub.textContent='Vaires-sur-Marne · Joyeux Noël ✨';
+    const a=document.querySelector('[data-i18n="welcome"]');if(a&&window.currentLang==='fr')a.textContent='Joyeux Noël ! 🎅';
+    const d=document.querySelector('[data-i18n="home_desc"]');if(d&&window.currentLang==='fr')d.textContent="Bienvenue à la Brasserie de la Gare, version Noël ! Neige, guirlandes, cadeaux et bonne humeur : la magie des fêtes est là. 🎁";
+    document.querySelectorAll('h3').forEach(x=>{if(x.textContent.includes('Blague'))x.textContent='Blague de Noël du chef 🎅';});
+    const t=document.querySelector('.jeux-subtitle');if(t)t.textContent='Spécial Noël 🎄 · Brasserie de la Gare';
+  }
+  function extras(){
+    const app=$('app');if(app&&!$('x-tk'))app.insertAdjacentHTML('beforebegin','<div id="x-tk" class="x-ticker"><span>🎄 JOYEUX NOËL À TOUS ! &nbsp;·&nbsp; 🎅 LA BRASSERIE VOUS SOUHAITE DE JOYEUSES FÊTES &nbsp;·&nbsp; ⛄ PROFITEZ DE LA MAGIE DE NOËL &nbsp;·&nbsp; 🎁 BONNES FÊTES ! &nbsp;·&nbsp; ❄️</span></div>');
+    const home=$('page-home');if(home&&!$('x-cd')&&home.firstElementChild)home.firstElementChild.insertAdjacentHTML('afterend','<div id="x-cd" class="x-card"><b>🎅 Compte à rebours de Noël</b><div class="x-cd" id="x-cdi"></div></div>');
+    const ft=document.querySelector('footer');if(ft&&!ft.querySelector('.x-fd'))ft.insertAdjacentHTML('afterbegin','<div class="x-fd" style="text-align:center;font-size:2rem;letter-spacing:8px;margin-bottom:16px">🎄🎁⛄🎅🔔🎁🎄</div>');
+  }
+  function count(){
+    const e=$('x-cdi');if(!e)return;const n=new Date();let t=new Date(n.getFullYear(),11,25);if(n>t)t=new Date(n.getFullYear()+1,11,25);
+    const ms=t-n,v=[Math.floor(ms/864e5),Math.floor(ms%864e5/36e5),Math.floor(ms%36e5/6e4),Math.floor(ms%6e4/1e3)],l=['jours','h','min','sec'];
+    e.innerHTML=v.map((x,i)=>'<div><i>'+String(x).padStart(2,'0')+'</i><s>'+l[i]+'</s></div>').join('');
+  }
+  setInterval(count,1000);
+
+  const cv=$('x-snow'),cx=cv.getContext('2d');let W,H,F=[];
+  const size=()=>{W=cv.width=innerWidth;H=cv.height=innerHeight;};size();addEventListener('resize',size);
+  for(let i=0;i<180;i++)F.push({x:Math.random()*W,y:Math.random()*H,r:1+Math.random()*3.5,s:.5+Math.random()*2,d:Math.random()*6,a:.5+Math.random()*.5});
+  let wind=0;setInterval(()=>wind=(Math.random()-.5)*2.4,3000);
+  (function loop(){cx.clearRect(0,0,W,H);F.forEach(f=>{f.y+=f.s;f.x+=Math.sin(f.d+=.012)*.7+wind*(f.r/4);if(f.y>H){f.y=-6;f.x=Math.random()*W;}if(f.x>W+5)f.x=-5;if(f.x<-5)f.x=W+5;cx.fillStyle='rgba(255,255,255,'+f.a+')';cx.beginPath();cx.arc(f.x,f.y,f.r,0,7);cx.fill();});requestAnimationFrame(loop);})();
+
+  const IC=['❄️','🎁','🔔','⭐','🎄','🍬','🍪','🦌','🎅','⛄'];
+  setInterval(()=>{if(document.hidden)return;const e=document.createElement('div');e.className='x-fall';e.textContent=IC[Math.floor(Math.random()*IC.length)];e.style.left=Math.random()*100+'vw';e.style.fontSize=(16+Math.random()*26)+'px';e.style.animationDuration=(6+Math.random()*7)+'s';fx.appendChild(e);setTimeout(()=>e.remove(),14000);},650);
+
+  const COL=['#f4c542','#ff3b3b','#3bd16f','#4da3ff','#fff','#ff8ad8'];
+  function burst(x,y,n){for(let i=0;i<n;i++){const p=document.createElement('div');p.className='x-pt';const s=4+Math.random()*6;p.style.cssText='width:'+s+'px;height:'+s+'px;left:'+x+'px;top:'+y+'px;background:'+COL[i%6]+';box-shadow:0 0 8px '+COL[i%6]+';--x:'+(Math.random()-.5)*220+'px;--y:'+(Math.random()-.5)*220+'px';fx.appendChild(p);setTimeout(()=>p.remove(),1000);}}
+  function emo(x,y,c){for(let i=0;i<6;i++){const p=document.createElement('div');p.className='x-em';p.textContent=c[i%c.length];p.style.left=x+'px';p.style.top=y+'px';p.style.setProperty('--x',(Math.random()-.5)*180+'px');p.style.setProperty('--y',(Math.random()-.8)*180+'px');fx.appendChild(p);setTimeout(()=>p.remove(),1100);}}
+  let last=0;addEventListener('pointermove',e=>{const t=Date.now();if(t-last>65){last=t;burst(e.clientX,e.clientY,2);}});
+  addEventListener('pointerdown',e=>{if(e.target.closest('#x-mute'))return;burst(e.clientX,e.clientY,22);emo(e.clientX,e.clientY,['🎁','❄️','⭐','🔔','🎄']);});
+  setInterval(()=>burst(Math.random()*innerWidth,Math.random()*innerHeight*.5,26),6000);
+
+  let A,on=localStorage.getItem('x_mute')!=='1',started=false,loopT;
+  const E=329.63,G=392,C=261.63,D=293.66,F2=349.23;
+  const SEQ=[[E,.25],[E,.25],[E,.5],[E,.25],[E,.25],[E,.5],[E,.25],[G,.25],[C,.375],[D,.125],[E,1],[F2,.25],[F2,.25],[F2,.375],[F2,.125],[F2,.25],[E,.25],[E,.25],[E,.125],[E,.125],[E,.25],[D,.25],[D,.25],[E,.25],[D,.5],[G,.5]];
+  function play(){if(!on)return;A=A||new(window.AudioContext||window.webkitAudioContext)();if(A.state==='suspended')A.resume();let t=A.currentTime+.05;SEQ.forEach(([f,d])=>{const o=A.createOscillator(),g=A.createGain();o.type='triangle';o.frequency.value=f;o.connect(g);g.connect(A.destination);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.12,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+d*.95);o.start(t);o.stop(t+d);t+=d*1.05;});loopT=setTimeout(play,(t-A.currentTime+3)*1000);}
+  addEventListener('pointerdown',()=>{if(!started&&on){started=true;play();}},{once:false});
+  $('x-mute').textContent=on?'🎵':'🔇';
+  $('x-mute').onclick=e=>{e.stopPropagation();on=!on;localStorage.setItem('x_mute',on?'0':'1');$('x-mute').textContent=on?'🎵':'🔇';clearTimeout(loopT);if(on){started=true;play();}};
+
+  if(window.getChefBotReply){const b=window.getChefBotReply;window.getChefBotReply=m=>/no[eë]l|r[eé]veillon|f[eê]tes/.test(m)?"Pour les repas de fêtes et réveillons, appelez-nous au 01 60 20 24 01 ou réservez en ligne. Joyeux Noël ! 🎄":b(m);}
+  const go=window.goToPage;window.goToPage=p=>{if(typeof go==='function')go(p);setTimeout(()=>{textify();extras();count();},30);};
+  textify();extras();count();window.showJoke();fix();w();
+  setTimeout(()=>{if(window.showToast)showToast('🎅','Ho ho ho !','Joyeux Noël à tous ! 🎄');burst(innerWidth/2,innerHeight/3,40);},1200);
+})();
+</script>
+<!-- ============ FIN MODE NOËL EXTRÊME ============
+</body>
 </html>
