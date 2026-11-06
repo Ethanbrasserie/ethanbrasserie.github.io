@@ -5,59 +5,251 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>À propos – Brasserie de la Gare à Vaires-sur-Marne</title>
-
-  <meta name="description" content="Découvrez la Brasserie de la Gare à Vaires-sur-Marne. Retrouvez notre établissement, notre ambiance et toutes nos informations sur notre site officiel.">
+  <title>À propos | Brasserie de la Gare - Vaires-sur-Marne</title>
+  <meta name="description" content="Découvrez la Brasserie de la Gare à Vaires-sur-Marne. Notre établissement, notre ambiance et notre histoire.">
 
   <link rel="canonical" href="https://brasserievaires.fr/a-propos.html">
 
-  <meta name="robots" content="index, follow">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #1a1919;
+      color: #f5f5f5;
+      line-height: 1.7;
+    }
+
+    :root {
+      --gold: #c9a45c;
+      --black: #1a1919;
+      --light: #222020;
+    }
+
+    header {
+      padding: 22px 8%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(201,164,92,0.25);
+    }
+
+    .logo {
+      color: var(--gold);
+      font-size: 21px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      border: 1px solid var(--gold);
+      padding: 9px 20px;
+      border-radius: 25px;
+      transition: .3s;
+    }
+
+    header a:hover {
+      background: var(--gold);
+      color: #1a1919;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px 85px;
+      background: linear-gradient(
+        180deg,
+        #292521 0%,
+        #1a1919 100%
+      );
+    }
+
+    .hero span {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 12px;
+    }
+
+    .hero h1 {
+      font-size: clamp(35px, 6vw, 58px);
+      color: var(--gold);
+      margin: 18px 0;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      color: #c5c1ba;
+      font-size: 17px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 70px 25px;
+    }
+
+    .section {
+      background: var(--light);
+      padding: 38px;
+      border-radius: 15px;
+      border: 1px solid rgba(201,164,92,0.18);
+      margin-bottom: 25px;
+    }
+
+    .section h2 {
+      color: var(--gold);
+      font-size: 25px;
+      margin-bottom: 17px;
+    }
+
+    .section p {
+      color: #d0ceca;
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+
+    .gold-line {
+      width: 55px;
+      height: 3px;
+      background: var(--gold);
+      margin-bottom: 25px;
+      border-radius: 5px;
+    }
+
+    .contact {
+      text-align: center;
+      padding: 65px 20px;
+      background: #211f1c;
+    }
+
+    .contact h2 {
+      color: var(--gold);
+      font-size: 29px;
+      margin-bottom: 15px;
+    }
+
+    .contact p {
+      color: #c5c1ba;
+      margin-bottom: 25px;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--gold);
+      color: #1a1919;
+      padding: 13px 27px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: .3s;
+    }
+
+    .button:hover {
+      background: #e0bd78;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      border-top: 1px solid rgba(201,164,92,0.2);
+      color: #85817b;
+      font-size: 13px;
+    }
+
+    @media(max-width: 600px) {
+      header {
+        padding: 18px 5%;
+      }
+
+      .logo {
+        font-size: 16px;
+      }
+
+      .hero {
+        padding: 75px 20px;
+      }
+
+      .section {
+        padding: 25px;
+      }
+
+      .container {
+        padding: 45px 18px;
+      }
+    }
+  </style>
 </head>
 
 <body>
+
   <header>
-    <h1>À propos de la Brasserie de la Gare</h1>
-    <nav>
-      <a href="/">Accueil</a>
-    </nav>
+    <div class="logo">BRASSERIE DE LA GARE</div>
+    <a href="/">Accueil</a>
   </header>
 
-  <main>
-    <section>
+  <section class="hero">
+    <span>Notre établissement</span>
+    <h1>À propos de nous</h1>
+    <p>
+      Bienvenue à la Brasserie de la Gare,
+      votre établissement à Vaires-sur-Marne.
+    </p>
+  </section>
+
+  <main class="container">
+
+    <section class="section">
+      <div class="gold-line"></div>
       <h2>Bienvenue à la Brasserie de la Gare</h2>
       <p>
         Située à Vaires-sur-Marne, la Brasserie de la Gare
-        vous accueille dans un cadre convivial.
+        vous accueille dans un cadre convivial et chaleureux.
       </p>
       <p>
-        Que vous souhaitiez partager un repas ou passer
-        un moment agréable, notre établissement vous accueille
-        avec plaisir.
+        Notre établissement est un lieu pour se retrouver,
+        partager un repas et profiter d'un moment agréable.
       </p>
     </section>
 
-    <section>
-      <h2>Notre établissement à Vaires-sur-Marne</h2>
+    <section class="section">
+      <div class="gold-line"></div>
+      <h2>Un établissement à Vaires-sur-Marne</h2>
       <p>
-        Retrouvez la Brasserie de la Gare à Vaires-sur-Marne,
-        et découvrez notre établissement ainsi que nos
-        informations pratiques sur notre site officiel.
+        La Brasserie de la Gare fait partie de la vie
+        de Vaires-sur-Marne. Nous sommes heureux de vous
+        accueillir et de vous faire découvrir notre établissement.
       </p>
     </section>
 
-    <section>
-      <h2>Nous retrouver</h2>
+    <section class="section">
+      <div class="gold-line"></div>
+      <h2>Découvrez notre brasserie</h2>
       <p>
-        Site officiel :
-        <a href="https://brasserievaires.fr/">
-          brasserievaires.fr
-        </a>
+        Retrouvez toutes les informations concernant notre
+        établissement directement sur notre site officiel.
       </p>
     </section>
+
   </main>
 
+  <section class="contact">
+    <h2>Envie de nous découvrir ?</h2>
+    <p>Retrouvez la Brasserie de la Gare sur notre site officiel.</p>
+    <a href="/" class="button">Découvrir notre site</a>
+  </section>
+
   <footer>
-    <p>© Brasserie de la Gare</p>
+    © 2026 Brasserie de la Gare · Vaires-sur-Marne
   </footer>
+
 </body>
 </html>
