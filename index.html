@@ -373,6 +373,62 @@
         }
         .rating-bar { height: 6px; border-radius: 3px; background: #e5e7eb; overflow: hidden; }
         .rating-bar-fill { height: 100%; background: linear-gradient(90deg, #f59e0b, #fbbf24); border-radius: 3px; }
+
+        /* ===== STYLE NORMAL AMÉLIORÉ — identité violet / rose conservée ===== */
+        @keyframes normal-card-in {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes normal-soft-glow {
+            0%,100% { box-shadow: 0 8px 24px rgba(124,58,237,.10); }
+            50% { box-shadow: 0 12px 30px rgba(236,72,153,.18); }
+        }
+        body {
+            background-size: 180% 180%;
+            animation: normal-bg-drift 22s ease-in-out infinite;
+        }
+        @keyframes normal-bg-drift {
+            0%,100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .page.active { animation: normal-card-in .35s ease both; }
+        .bg-white.rounded-2xl, .avis-card {
+            transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+            border: 1px solid rgba(124,58,237,.07);
+        }
+        .bg-white.rounded-2xl:hover, .avis-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(124,58,237,.13);
+            border-color: rgba(236,72,153,.22);
+        }
+        button, a { transition: transform .18s ease, box-shadow .18s ease, filter .18s ease; }
+        button:hover:not(:disabled) {
+            filter: brightness(1.035);
+        }
+        .bg-gradient-to-r.from-purple-600,
+        .bg-gradient-to-br.from-purple-400 {
+            background-size: 180% 180%;
+            animation: normal-gradient-flow 8s ease infinite;
+        }
+        @keyframes normal-gradient-flow {
+            0%,100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        #page-home > .relative:first-child {
+            box-shadow: 0 12px 30px rgba(124,58,237,.18);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+        #page-home > .relative:first-child:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 36px rgba(236,72,153,.22);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            body, .page.active, .bg-white.rounded-2xl, .avis-card, button, a {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
     </style>
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
     <script>
@@ -3891,8 +3947,8 @@ document.addEventListener('DOMContentLoaded', () => {
 <!-- ===== FIN RETRAIT CLICK & COLLECT ===== --><!-- ===== PHOTOS DE LA GALERIE =====
   À coller avant </body>, après les autres blocs (thème de Noël et retrait Click & Collect). -->
 <style>
-#gallery-container > div{border:2px solid #f4c542;box-shadow:0 0 14px rgba(244,197,66,.35);transition:transform .25s,box-shadow .25s}
-#gallery-container > div:hover{transform:scale(1.04) rotate(-1.5deg);box-shadow:0 0 28px rgba(244,197,66,.8)}
+#gallery-container > div{border:2px solid rgba(124,58,237,.22);box-shadow:0 0 14px rgba(124,58,237,.12);transition:transform .25s,box-shadow .25s}
+#gallery-container > div:hover{transform:scale(1.035);box-shadow:0 0 24px rgba(236,72,153,.28)}
 </style>
 <script>
 (function(){
@@ -3937,6 +3993,8 @@ document.addEventListener('DOMContentLoaded', () => {
 </style>
 <script>
 (function(){
+  const today = new Date();
+  if (today.getMonth() < 10 || (today.getMonth() === 10 && today.getDate() < 25)) return;
   // Information pratique sur la carte
   const menu = document.getElementById('page-menu');
   if(menu && !document.getElementById('h-notice')){
@@ -4016,9 +4074,9 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 })();
 </script>
-<!-- ===== FIN AVERTISSEMENT CARTE + ANIMATIONS DE NOËL ===== --><!-- ============ MODE NOËL EXTRÊME ============ -->
+<!-- ===== FIN AVERTISSEMENT CARTE + ANIMATIONS DE NOËL ===== --><!-- ============ MODE NOËL EXTRÊME : activation automatique le 25 novembre ============ -->
 <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&display=swap" rel="stylesheet">
-<style id="x-style">
+<style id="x-style" media="not all">
 :root{--c:#0f2e24;--t:#fdf6e3;--g:#f4c542;--r:#c1121f}
 html body{background:linear-gradient(120deg,#06231a,#0b3d2e,#4a0a16,#06231a) fixed !important;background-size:400% 400% !important;animation:x-aurora 16s ease infinite;color:var(--t)}
 h1,h2,.jeux-title{font-family:'Mountains of Christmas',cursive !important}
@@ -4083,16 +4141,23 @@ footer{background:linear-gradient(135deg,#031510,#0b3d2e) !important;border-top:
 .x-cd i{display:block;font-style:normal;font-size:1.4rem;font-weight:800}.x-cd s{text-decoration:none;font-size:.6rem;color:var(--g);text-transform:uppercase}
 .x-fab{position:fixed;left:70px;bottom:130px;z-index:48;width:44px;height:44px;border-radius:50%;border:none;font-size:1.3rem;background:#c1121f;animation:h-glow 2s infinite}
 </style>
-<div class="x-s x-top"></div><div class="x-s x-l"></div><div class="x-s x-r"></div>
-<div class="x-pile"></div>
-<div class="x-deco x-tree">🎄🎁</div><div class="x-deco x-man">⛄</div>
-<canvas id="x-snow"></canvas>
-<div id="x-fx"><div class="x-sleigh">🦌🦌🦌🛷🎅</div></div>
-<button class="x-fab" id="x-mute" aria-label="Musique">🎵</button>
+<div class="x-s x-top" hidden></div><div class="x-s x-l" hidden></div><div class="x-s x-r" hidden></div>
+<div class="x-pile" hidden></div>
+<div class="x-deco x-tree" hidden>🎄🎁</div><div class="x-deco x-man" hidden>⛄</div>
+<canvas id="x-snow" hidden></canvas>
+<div id="x-fx" hidden><div class="x-sleigh">🦌🦌🦌🛷🎅</div></div>
+<button class="x-fab" id="x-mute" aria-label="Musique" hidden>🎵</button>
 <script>
 (function(){
+  const today = new Date();
+  // Activation automatique le 25 novembre, selon la date locale du visiteur.
+  if (today.getMonth() < 10 || (today.getMonth() === 10 && today.getDate() < 25)) return;
   const $ = id => document.getElementById(id), fx = $('x-fx');
   if(!fx || $('x-style')?.dataset.active) return;
+  const christmasStyle = $('x-style');
+  if (christmasStyle) christmasStyle.media = 'all';
+  ['x-snow','x-fx','x-mute'].forEach(id => { const el = $(id); if (el) el.hidden = false; });
+  document.querySelectorAll('.x-s,.x-pile,.x-deco').forEach(el => el.hidden = false);
   $('x-style').dataset.active='1';
   document.title = '🎄 Brasserie de la Gare — Joyeux Noël !';
   const mt = document.querySelector('meta[name="theme-color"]'); if(mt) mt.content = '#06231a';
